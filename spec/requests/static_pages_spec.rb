@@ -2,52 +2,41 @@ require 'spec_helper'
 
 describe "Static pages" do
   
+  subject { page }
+  
   describe "Home page" do
+    before { visit root_path }
     
-    it "should have the content 'AgreedUpon'" do
-      visit '/static_pages/home'
-      expect(page).to have_content('AgreedUpon')
-    end
-    
-    it "should have the title 'AgreedUpon | Home'" do
-      visit '/static_pages/home'
-      expect(page).to have_title('AgreedUpon | Home')
-    end
+    it { should have_content('AgreedUpon') }
+    it { should have_title(full_title('')) }
+    it { should_not have_title('| Home') }
   end
   
   describe "About page" do
-    it "should have the content 'About Us'" do
-      visit '/static_pages/about'
-      expect(page).to have_content('About Us')
-    end
+    before { visit about_path }
     
-    it "should have the title 'AgreedUpon | About Us'" do
-      visit '/static_pages/about'
-      expect(page).to have_title('AgreedUpon | About Us')
-    end
+    it { should have_content('About Us') }
+    it { should have_title(full_title('About Us')) }
   end
   
   describe "Getting Started page" do
-    it "should have the content 'Getting Started'" do
-      visit '/static_pages/start'
-      expect(page).to have_content('Getting Started')
-    end
+    before { visit start_path }
     
-    it "should have the title 'AgreedUpon | Getting Started'" do
-      visit '/static_pages/start'
-      expect(page).to have_title('AgreedUpon | Getting Started')
-    end
+    it { should have_content('Getting Started') }
+    it { should have_title(full_title('Getting Started')) }
   end
   
   describe "Mission page" do
-    it "should have the content 'Our Mission'" do
-      visit '/static_pages/mission'
-      expect(page).to have_content('Our Mission')
-    end
+    before { visit mission_path }
     
-    it "should have the title 'AgreedUpon | Our Mission'" do
-      visit '/static_pages/mission'
-      expect(page).to have_title('AgreedUpon | Our Mission')
-    end
+    it { should have_content('Our Mission') }
+    it { should have_title(full_title('Our Mission')) }
+  end
+
+  describe "Contact page" do
+    before { visit contact_path }
+    
+    it { should have_content('Contact Us') }
+    it { should have_title(full_title('Contact Us')) }
   end
 end

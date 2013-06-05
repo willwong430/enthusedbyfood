@@ -10,4 +10,7 @@ class StaticPagesController < ApplicationController
   
   def mission
   end
+  
+  def contact
+  end
 end

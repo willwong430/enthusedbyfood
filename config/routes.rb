@@ -1,8 +1,13 @@
 Agreedupon1::Application.routes.draw do
-  get "static_pages/home"
-  get "static_pages/about"
-  get "static_pages/start"
-  get "static_pages/mission"
+  get "users/new"
+  
+  root to: 'static_pages#home'
+  match '/about',     to: 'static_pages#about',   via: 'get'
+  match '/start',     to: 'static_pages#start',   via: 'get'
+  match '/mission',   to: 'static_pages#mission', via: 'get'
+  match '/contact',   to: 'static_pages#contact', via: 'get'
+  match '/signup',    to: 'users#new',            via: 'get'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
