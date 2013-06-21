@@ -94,10 +94,19 @@ describe "User pages" do
   
   describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
+    let!(:a1)  { FactoryGirl.create(:activity, user: user, content: "Foo") }
+    let!(:a2)  { FactoryGirl.create(:activity, user: user, content: "Bar") }
+    
     before { visit user_path(user) }
     
     it { should have_content(user.name) }
     it { should have_title(user.name) }
+    
+    describe "activities" do
+      it { should have_content(a1.content) }
+      it { should have_content(a2.content) }
+      it { should have_content(user.activities.count) }
+    end
   end
 
   describe "edit" do
@@ -135,6 +144,15 @@ describe "User pages" do
       it { should have_link('Sign out', href: signout_path) }
       specify { expect(user.reload.name).to eq new_name }
       specify { expect(user.reload.email).to eq new_email }
+    end
+  
+    describe "forbidden attributes" do
+      let(:params) do
+        { user: { admin: true, password: user.password,
+                  password_confirmation: user.password } }
+      end
+      before { patch user_path(user), params }
+      specify { expect(user.reload).not_to be_admin }
     end
   end
 end

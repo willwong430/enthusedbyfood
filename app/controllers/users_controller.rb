@@ -8,11 +8,16 @@ class UsersController < ApplicationController
   end
   
   def new
-    @user = User.new
+    if signed_in?
+      redirect_to root_path
+    else
+      @user = User.new
+    end
   end
   
   def show
     @user = User.find(params[:id])
+    @activities = @user.activities.paginate(page: params[:page])
   end
   
   def create
@@ -33,6 +38,7 @@ class UsersController < ApplicationController
   end
   
   def edit
+    @user = User.find(params[:id])
   end
   
   def update
@@ -53,13 +59,6 @@ class UsersController < ApplicationController
     end
 
     # Before filters
-    
-    def signed_in_user
-      unless signed_in?
-        store_location
-        redirect_to signin_url, notice: "Please sign in."
-      end
-    end
     
     def correct_user
       @user = User.find(params[:id])

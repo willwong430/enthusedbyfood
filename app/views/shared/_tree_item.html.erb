@@ -1,0 +1,11 @@
+<li id="<%= tree_item.id %>">
+	<%= link_to gravatar_for(tree_item.user), tree_item.user %>
+		<span class="user">
+			<%= link_to tree_item.user.name, tree_item.user %>
+		</span>
+		<span class="content"><%= tree_item.content %></span>
+		<span class="timestamp">
+			Posted <%= time_ago_in_words(tree_item.created_at) %>
+		</span>
+	<%= render 'shared/delete', object: tree_item %>
+</li> 
