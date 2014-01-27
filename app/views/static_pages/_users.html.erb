@@ -1,0 +1,18 @@
+<ul class="users">
+	<% for user in @users %>
+		<li>
+			<% if user.image.blank? %>
+				<%= gravatar_for user, size: 52 %>
+				<%= link_to user.name, user %>
+				<% if current_user.admin? && !current_user?(user) %>
+					| <%= link_to "delete", user, method: :delete,
+																			data: { confirm: "You sure?" } %>
+				<% end %>
+			<% else %>
+				<%= link_to (image_tag user.image_url(:avatar).to_s), user, id: "user_image" %>
+				<%= link_to user.name, user %>
+			<% end %>
+		</li>
+	<% end %>
+</ul>
+<%= will_paginate @users %>

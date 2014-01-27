@@ -11,7 +11,7 @@ describe "Static pages" do
   
   describe "Home page" do
     before { visit root_path }
-    let(:heading)    { 'AgreedUpon' }
+    let(:heading)    { 'enthused by FOOD' }
     let(:page_title) { '' }
     
     it_should_behave_like "all static pages"
@@ -39,8 +39,8 @@ describe "Static pages" do
           visit root_path
         end
         
-        it { should have_link("0 following", href: following_user_path(user)) }
-        it { should have_link("1 followers", href: followers_user_path(user)) }
+        it { should have_link("Enthused with: 0 Foodies", href: following_user_path(user)) }
+        it { should have_link("Enthused by: 1 Foodies", href: followers_user_path(user)) }
       end
     end
   end
@@ -87,8 +87,6 @@ describe "Static pages" do
     expect(page).to have_title(full_title('About Us'))
     click_link "Contact Us"
     expect(page).to have_title(full_title('Contact Us'))
-    click_link "Home"
-    click_link "Sign up now!"
     expect(page).to have_title(full_title(''))
   end
 end

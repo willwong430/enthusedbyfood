@@ -1,0 +1,9 @@
+development:
+    cloud_name: "dkokbtb6t"
+    api_key: "594387786884647"
+    api_secret: "isBonXw0AasT4D9KtB5oEhdmSWs"
+        
+production:
+    cloud_name: "dkokbtb6t"
+    api_key: "594387786884647"
+    api_secret: "isBonXw0AasT4D9KtB5oEhdmSWs"

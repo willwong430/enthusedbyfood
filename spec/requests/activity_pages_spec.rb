@@ -16,11 +16,11 @@ describe "Activity pages" do
     describe "with invalid information" do 
 
       it "should not create an activity" do
-        expect { click_button "Post" }.not_to change(Activity, :count)
+        expect { click_button "Share" }.not_to change(Activity, :count)
       end
       
       describe "error messages" do
-        before { click_button "Post" }
+        before { click_button "Share" }
         it { should have_content('error') }
       end
     end
@@ -30,8 +30,7 @@ describe "Activity pages" do
       before { fill_in 'activity_content', with: "Lorem ipsum" }
       
       it "should create an activity" do
-        
-        expect { click_button "Post" }.to change(Activity, :count).by(1)
+        expect { click_button "Share" }.to change(Activity, :count).by(1)
       end
         
       describe "activity counter should increase by 1" do
@@ -52,6 +51,12 @@ describe "Activity pages" do
         end
       end
         
+      describe "adding additional details" do
+        before { click_button "Add more details" }
+        
+        it { should have_label("How would you rate it on the awesome meter?") }
+      end
+    
     end
   end
 

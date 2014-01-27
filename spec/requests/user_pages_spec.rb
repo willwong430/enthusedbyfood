@@ -13,8 +13,8 @@ describe "User pages" do
       visit users_path
     end
     
-    it { should have_title('All users') }
-    it { should have_content('All users') }
+    it { should have_title('All Foodies') }
+    it { should have_content('All Foodies') }
     
     describe "pagination" do
       
@@ -106,6 +106,12 @@ describe "User pages" do
       it { should have_content(a1.content) }
       it { should have_content(a2.content) }
       it { should have_content(user.activities.count) }
+      
+      # describe "associated details" do
+      #   before { click_button "Story of Adventure" }
+      #   it { should have_selector('div#myModal') }
+      # end
+        
     end
     
     describe "follow/unfollow buttons" do

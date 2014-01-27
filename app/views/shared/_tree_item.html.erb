@@ -1,11 +1,41 @@
 <li id="<%= tree_item.id %>">
-	<%= link_to gravatar_for(tree_item.user), tree_item.user %>
-		<span class="user">
-			<%= link_to tree_item.user.name, tree_item.user %>
+	<div class="user">
+		<span class="user_profile">
+			<%= link_to (image_tag tree_item.user.image_url(:avatar).to_s), tree_item.user, id: "user_image"%>
 		</span>
-		<span class="content"><%= tree_item.content %></span>
-		<span class="timestamp">
-			Posted <%= time_ago_in_words(tree_item.created_at) %>
+		<span>
+			<% if current_user?(tree_item.user) %>
+			<%= link_to "You", tree_item.user, class: 'link-class' %>
+			<% else %>
+			<%= link_to tree_item.user.name, tree_item.user, class: 'link-class' %>
+			<% end %>
+			<span class="timestamp tree_item">
+				shared a <%= tree_item.type %> <%= time_ago_in_words(tree_item.created_at) %> ago.
+			</span>
 		</span>
+	</div>
+	
+	<div>
+		<span class="content"><%= tree_item.title %><span>
+	</div>
+	
+	<% if tree_item.type == "link" %>
+	<span>
+		<a class="link" href=<%=tree_item.content%> target="_blank">
+		<%= image_tag ("http://immediatenet.com/t/m?Size=1024x768&URL=" + tree_item.content) %>
+		</a>
+		<a class="link_text" href=<%= tree_item.content %>><%= tree_item.content %></a>
+	</span>
+	<% end %>
+	
+	<% unless tree_item.image.blank? %>
+		<div class="img-responsive" id="photo" data-toggle="tooltip" title="<%= tree_item.content %>"><%= image_tag tree_item.image_url(:standard).to_s %>
+		</div>	
+	<% end %>
+	<div class="tagged">
+		Tags: <%= raw tree_item.tag_list.map { |t| link_to t, food_path(t) }.join(', ') %>
+	</div>
+	<div>
 	<%= render 'shared/delete', object: tree_item %>
-</li> 
+	</div>
+</li>

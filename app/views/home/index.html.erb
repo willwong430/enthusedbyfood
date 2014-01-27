@@ -1,0 +1,19 @@
+<% if signed_in? %>
+	<div class="row">
+		<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" >
+			<h3>Recent Updates from Fellow Foodies</h3>
+			<%= render 'shared/tree' %>
+		</div>
+	</div>
+<% else %>
+	<div class="center hero-unit">
+		<h1>We are <span style="color: #9E0508">enthused by FOOD!</span></h1>
+		<h2 style="color: #2B4F15">
+			A platform for all things food with a social aspect.
+		</h2>
+		<p>
+			EnthusedByFood's mission is to make it easy, fun and social for everyone to learn about what we are eating, to discover new foods, and to explore the world through food. We feel it is a worthy cause, for we are what we eat. 
+		</p>
+		<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+	</div>
+<% end %>

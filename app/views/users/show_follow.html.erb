@@ -1,29 +1,81 @@
 <% provide(:title, @title) %>
 <div class="row">
-	<aside class="span4">
-		<section>
+	<aside class="col-sm-4 col-md-4 col-lg-4">
+		<section class="user-sidebar">
 			<%= render 'shared/user_info' %>
 		</section>
 		<section>
 			<%= render 'shared/stats' %>
-			<% if @users.any? %>
-				<div class="user_avatars">
-					<% @users.each do |user| %>
-						<%= link_to gravatar_for(user, size: 30), user %>
-					<% end %>
-				</div>
-			<% end %>
 		</section>
 	</aside>
-	<div class="span8">
-		<h3><%= @title %></h3>
-		<% if @users.any? %>
+	<div class="col-sm-8 col-md-8 col-lg-8">
+		<% if @title == "Followers" %>
+			<h4 class="following_list">
+				Followed by <%= pluralize(@users.count, "Foodie") %>
+			</h4>
+			<% if @users.any? %>
 			<ul class="users">
 				<%= render @users %>
 			</ul>
-			<%= will_paginate %>
+			<% end %>
+		<% else %>
+			<div class="following_cat" id="foodies">
+				<h4 class="following_list">
+					<%= @title %> <%= pluralize(@users.count, "Foodie") %>
+				</h4>
+				<% if @users.any? %>
+					<ul class="users">
+					<%= render @users %>
+					</ul>
+				<% end %>
+			</div>
+			
+			<div id="chefs">
+				<h4 class="following_list" >
+				<%= @title %> <%= pluralize(@user.followed_chefs.count, "Chef") %>
+				</h4>
+				<% if @chefs.any? %>
+				<ul class="chefs">
+					<%= render 'chefs/chefs' %>
+				</ul>
+				<% end %>
+			</div>
+			
+			<div id="ingredients">
+				<h4 class="following_list" >
+					<%= @title %> <%= pluralize(@user.followed_foods.count, "Ingredient") %>		
+				</h4>
+				<% if @foods.any? %>
+					<ul class="foods">
+					<%= render 'foods/foods' %>
+					</ul>
+				<% end %>
+			</div>
+		
+			<div id="dishes">
+			<h4 class="following_list" >
+			<%= @title %> <%= pluralize(@users.count, "Dish") %>		
+			</h4>
+		</div>		
+	
+			<div id="restaurants">
+			<h4 class="following_list" >
+			<%= @title %> <%= pluralize(@users.count, "Restaurant") %>	
+			</h4>	
+		</div>
+		
+			<div id="cultures">
+			<h4 class="following_list" >
+			<%= @title %> <%= pluralize(@users.count, "Culture") %>
+			</h4>		
+		</div>
+		
+			<div id="regions">
+			<h4 class="following_list" >
+			<%= @title %> <%= pluralize(@users.count, "Region") %>
+			</h4>
+		</div>
+			
 		<% end %>
 	</div>
 </div>
-		
-		

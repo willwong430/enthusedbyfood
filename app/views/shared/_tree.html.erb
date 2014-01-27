@@ -1,6 +1,6 @@
 <% if @tree_items.any? %>
-	<ol class="activities">
-		<%= render partial: 'shared/tree_item', collection: @tree_items %>
-	</ol>
-	<%= will_paginate @tree_items %>
+<ol class="activities">
+	<%= render partial: 'shared/tree_item', collection: @tree_items %>
+</ol>
+<ul class="pagination"></ul>
 <% end %>

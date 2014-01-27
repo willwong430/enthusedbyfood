@@ -1,17 +1,8 @@
-<div class="row">
-	<aside class="span4">
-		<section>
-			<%= render 'shared/user_info' %>
-		</section>
-		<section>
-			<%= render 'shared/stats'%>
-		</section>
-		<section>
-			<%= render 'shared/activity_form' %>
-		</section>
-	</aside>
-	<div class="span8">
-		<h3>HIP Tree</h3>
-		<%= render 'shared/tree'%>
+<% if signed_in? %>
+	<div class="row">
+		<div class="col-12 col-sm-8 col-lg-8">
+			<%= render 'shared/tree_item', collection: @tree_items %>
 	</div>
+
 </div>
+

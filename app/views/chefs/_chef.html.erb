@@ -1,0 +1,14 @@
+<li class="<%= chef.id %>">
+	<% if chef.image.blank? %>
+		<%= image_tag('default_chef.png') %>
+		<%= link_to chef.name, chef %>
+		<% if current_user.admin? && !current_user?(chef) %>
+		| <%= link_to "delete", chef, method: :delete,
+		data: { confirm: "You sure?" } %>
+		<% end %>
+	<% else %>	
+		<%= link_to (image_tag chef.image_url(:avatar).to_s), chef, id: "chef-image" %>
+		<%= link_to chef.name, chef, class: "chef-name" %>
+	<div class="clear"></div>
+	<% end %>
+</li>

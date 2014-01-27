@@ -1,31 +1,49 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-	<div class="navbar-inner">
-		<div class="container">
-			<%= link_to "agreedupon", 'http://agreedupon.us', id: "logo" %>
-			<nav>
-				<ul class="nav pull-right">
-					<li><%= link_to "Home", root_path %></li>
-					<% if signed_in? %>
-						<li><%= link_to "A Better World", users_path %></li>
-						<li id="fat-menu" class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								Account <b class="caret"></b>
-							</a>
-							<ul class="dropdown-menu">
-								<li><%= link_to "Profile", current_user %></li>
-								<li><%= link_to "Settings", edit_user_path(current_user) %></li>
-								<li class="divider"></li>
-								<li>
-									<%= link_to "Sign out", signout_path, method: "delete" %>
-								</li>
-							</ul>
-						</li>
-					<% else %>
-						<li><%= link_to "Getting Started",  start_path %></li>
-						<li><%= link_to "Sign in", signin_path %></li>
-					<% end %>
-				</ul>
-			</nav>
-		</div>
+<div class="container" id="header">	
+	<div class="row">
+		<a id="logo" href="/">enthused by 
+			<span>FOOD</span>
+			</a>
+		<%= render 'shared/search' %>
 	</div>
-</header>
+
+	<div class="navbar navbar-default navbar-inverse">
+		<div class="navbar-header">
+			<a data-toggle="modal" href="#myModal"><%= image_tag('foodie.png') %>
+			</a>
+			<%= render 'shared/header_modal' %>
+		</div> <!-- /.navbar-header -->
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav" id="navigations">
+				<% if signed_in? %>
+				<li><a data-toggle="modal" href="#modalForm">Share</a></li>
+				<%= render 'shared/post_modal' %>
+				<li><%= link_to "Cultivate", cultivate_path %></li>
+				<li><%= link_to "Explore", foods_path %></li>
+				<li><%= link_to "Discover", discover_path %></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right" id="acct">
+				<li style="border-right: 1px solid #9E0508"><%= link_to "My Profile", current_user %></li>
+				<li id="fat-menu" class="dropdown">
+					<a href="#" data-toggle="dropdown">
+						Account <b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+						<li><%= link_to "Profile", current_user, class: "dropdownLink" %></li>
+						<li><%= link_to "Settings", edit_user_path(current_user), class: "dropdownLink" %></li>
+						<li class="divider"></li>
+						<li>
+							<%= link_to "Sign out", signout_path, method: "delete", class: "dropdownLink" %>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<% else %>
+			<li><%= link_to "Discover", discover_path %></li>
+			<li><%= link_to "Getting Started",  start_path %></li>
+			<li><%= link_to "Sign in", signin_path %></li>
+			<% end %>
+		</div> <!-- navbar-collapse -->
+	</div> 	<!--- navbar -->
+</div> <!-- container -->
+
+

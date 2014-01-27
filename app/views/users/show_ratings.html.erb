@@ -1,0 +1,71 @@
+<% provide(:title, @title) %>
+<div class="row">
+	<% if current_user?(@user) %>
+		<h2>My Bowl of Lists and Plate of Ratings</h2>
+	<% else %>
+		<h2><%= @user.name %>'s Bowl of Lists and Plate of Ratings</h2>
+	<% end %>
+	<aside class="col-sm-3 col-md-3 col-lg-3">
+		<div id="ratings_side">
+			<% if current_user?(@user) %>
+				<h4>My Bowl</h4>
+			<% else %>
+				<h4><%= @user.name %>'s Bowl</h4>
+			<% end %>
+			<% if @user.ratings.empty? %>
+			<p>No lists yet!</p>
+			<div class="add-list">
+			<%= link_to "Add a List", new_rating_path, id: "new_link", remote: true %>
+			</div>
+			<% else %>
+			<ul class="ratings_list_wrapper" id="ratings_lists">
+				<% @ratings.each do |rating| %>
+				<li class="ratings_list">
+					<span>
+						<a href="#<%=rating.name%>"><%= rating.name %></a>
+						<% if current_user?(@user)%>
+						<%= link_to "(edit list)", edit_rating_path(rating), class: 'list_edit' %>
+						<% end %>
+					</span>
+				</li>
+				<% end %>
+			</ul>
+			<% if current_user?(@user)%>
+			<div class="add-list">
+			<%= link_to "Add a List", new_rating_path, id: "new_link", remote: true %>
+			</div>
+			<% end %>
+			<% end %>
+		</div>
+	</aside>
+	<div class="col-md-8">
+		<div class="rating-list-section">
+			<div class="page-header">
+				<% if current_user?(@user)%>
+				<h4>My Plate of <%= @title %></h4>
+				<% else %>
+				<h4><%= @user.name %>'s <%= @title %></h4>
+				<% end %>
+			</div>
+			<% if current_user?(@user) && @user.ratings.empty? %>
+				<p>No ratings yet!</p>
+				<div class="add-list">
+				<%= link_to "Add a List", new_rating_path, id: "new_link", remote: true %>
+				</div>
+			<% else %>
+			<% @ratings.each do |rating| %>
+				<div class="ratings_list" id="<%= rating.name %>">
+					<h5 id="rating-list-main"><%= rating.name %></h5>
+					<ul class="rating-list-main">
+					<% unless rating.lists.empty? %>
+						<% rating.lists.each do |list| %>
+						<li><%= list.content %></li>
+						<% end %>
+					<% end %>
+					</ul>
+				</div>
+			<% end %>
+			<% end %>
+		</div><!-- .rating-list-section -->			
+	</div><!-- right-column close -->
+</div>

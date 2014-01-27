@@ -1,24 +1,48 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-	<aside class="span4">
-		<section>
-			<h1>
-				<%= gravatar_for @user %>
+	<aside class="col-sm-4 col-md-4 col-lg-4">
+		<section class="user-sidebar">
+			<h4>
+				<% if @user.image.blank? %>
+						<%= gravatar_for @user, size: 52 %>
+						<%= link_to @user.name, @user %>
+				<% else %>
+				<a id="user_image" data-toggle="modal" href="#userModal"><%= image_tag @user.image_url(:avatar).to_s %></a>
+				<%= render 'users/modal_avatar' %>
 				<%= @user.name %>
-			</h1>
+				<% end %>
+			</h4>
+			<% unless current_user?(@user) %>
+				<%= render 'follow_form' if signed_in? %>
+			<% end %>
 		</section>
-		<section>
-			<%= render 'shared/stats' %>
-		</section>
+		<section id="stats-wrapper"><%= render 'shared/stats' %></section>
+		<section><%= render 'shared/listamania' %></section>
 	</aside>
-	<div class="span8">
-		<%= render 'follow_form' if signed_in? %>
-		<% if @user.activities.any? %>
-			<h3>Activities (<%= @user.activities.count %>)</h3>
-			<ol class="activities">
-				<%= render @activities %>
-			</ol>
-			<%= will_paginate @activities %>
+	<div class="col-sm-8 col-md-8 col-lg-8">
+		<% if current_user?(@user) %>
+			<% if @user.activities.any? %>
+				<h3>Your Recent Activity</h3>
+				<ol class="activities">	
+					<%= render @activities %>
+				</ol>
+				<%= will_paginate @activities %>
+			<% else %>
+				<p>No activity yet! <a data-toggle="modal" href="#modalForm">Share</a>
+				<%= render 'shared/post_modal' %> something good!
+				</p>
+			<% end %>
+		<% else %>
+			<% if @user.activities.any? %>
+				<h3><%= @user.name %>'s Recent Activity</h3>
+				<ol class="activities">	
+					<%= render @activities %>
+				</ol>
+				<%= will_paginate @activities %>
+			<% else %>
+				<h3>No activity yet!</h3>
+			<% end %>
 		<% end %>
 	</div>
+	
 </div>

@@ -1,0 +1,40 @@
+<div class="row">
+	<div class="chef-profile">
+		<h2 id="chef-name" class="chef-name"><%= @chef.name.titleize %></h2>
+		<div class="col-sm-3 col-md-3 col-lg-3">
+			<div id="chef-profile-image">
+				<% if @chef.image.blank? %>
+					<p style="font-size: 0.8em">(Beautiful image of chef coming soon)</p>
+					<%= image_tag('default_chef.png') %>
+				<% else %>
+					<%= image_tag @chef.main_image, class: "chef-profile-image",
+																					alt: h(@chef.name) %>
+				<% end %>
+			</div>
+			<%= render 'follow_form' %>
+		</div>
+		<div class="col-sm-8 col-md-8 col-lg-8" id="chef-description" >
+			<div>
+				<h4>Description</h4>
+				<p>brief summary about chef</p>
+			</div>
+			<div>
+				<h4>chef benefits</h4>
+				<p>top 10 benefits about that chef</p>
+				<%= @xml_1 %>
+			</div>
+			<div>
+				<h4>chef bites</h4>
+				<p>Interesting tidbits about chef</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="chef-posted">
+		<p>Images shared by community so far</p>
+		<p>People enthused with the chef so far</p>
+		<p>Related links shared by community so far</p>
+	</div>
+</div>

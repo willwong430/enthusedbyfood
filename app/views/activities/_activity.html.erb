@@ -1,7 +1,25 @@
-<li>
-	<span class="content"><%= activity.content %></span>
-	<span class="timestamp">
-		Posted <%= time_ago_in_words(activity.created_at) %> ago.
+<li class="activity">
+	<div class="timestamp" id="timestamp-activity">
+		Shared a <%= activity.type %> <%= time_ago_in_words(activity.created_at) %> ago.
+	</div>
+	<% if activity.type == "link" %>
+	<span>
+		<a class="link" href=<%=activity.content%> target="_blank">
+		<%= image_tag ("http://immediatenet.com/t/m?Size=1024x768&URL=" + activity.content) %>
+		</a>
+		<a class="link_text" href=<%= activity.content %>><%= activity.content %></a>
 	</span>
+	<% end %>
+	
+	<% unless activity.image.blank? %>
+		<div class="content"><%= activity.title %></div>
+		<div class="img-responsive" id="photo" data-toggle="tooltip" title="<%= activity.content %>"><%= image_tag activity.image_url(:standard).to_s %>
+		</div>	
+	<% end %>
+	<div class="tagged">
+		Tags: <%= raw activity.tag_list.map { |t| link_to t, food_path(t) }.join(', ') %>
+	</div>
+	<div id="delete">
 	<%= render 'shared/delete', object: activity %>
+	</div>
 </li>

@@ -1,0 +1,25 @@
+<%= form_for @rating, remote: true do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	<div>
+		<button type="button" class="close" aria-hidden="true">&times;</button>
+	</div>
+	<div class="field">
+		<%= f.label :name, "Name of List:" %><br />
+		<%= f.text_field :name %>
+	</div>
+
+	<div class="button">
+		<%= f.submit "Add List", class: "btn btn-primary btn-success" %>
+	</div>
+	
+<% end %>
+<script>
+$(function(){
+	$("body").on("click", '.lists .close',
+		function() {
+			$('form#new_rating.new_rating').hide();
+			$('a#new_link').show();
+		}
+	)}
+);
+</script>

@@ -1,7 +1,47 @@
-<%= form_for(@activity) do |f| %>
+<%= form_for(@activity, :html => {:multipart => true}) do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
-	<div class="field">
-		<%= f.text_area :content, placeholder: "Submit a new activity" %>
-	</div>
-	<%= f.submit "Post", class: "btn btn-large btn-primary" %>
+
+	<fieldset>
+		<%= f.label :title, "Title of post:", class: 'attach' %>
+		<%= f.text_area :title, class: 'post', placeholder: "Share your foodie adventure..." %>
+		<div>
+			<span><strong>Attach:</strong>
+			<%= f.select :type, %w[select photo link], class: 'type' %>
+			</span>
+			
+			<span id="attach_story">
+				<%= f.fields_for :details do |builder| %>
+					<%= render 'detail_fields', f: builder %>
+				<% end %>
+			</span>
+			
+			<span id="attach_photo">
+				<span class="fileupload fileupload-new" data-provides="fileupload">
+					<div class="fileupload-preview thumbnail" style="width: 200px; height: 150px"></div>
+					<span class="btn btn-file" id="button-cust">
+						<span class="fileupload-new">Show</span>
+							<%= f.file_field :image, :as => :file %>
+						<span class="fileupload-exists">Change</span>
+						<input type="file" />
+					</span>
+					<a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
+				</span>
+			</span>
+		
+		<span id="attach_link">
+			<%= f.text_field :content, placeholder: "Share an article, a link, an interesting tidbit..."%>
+		</span>
+		
+		<div id="attach-tags">
+			<span><%= f.label :tag_list, "Tags (separated by commas):" %></span>
+			<span><%= f.text_field :tag_list, id: "tag-input" %></span>
+		</div>
+		
+		</div>
+		<div class="button">
+			<%= f.submit "Share!", class: "btn btn-primary btn-success", id: 'search-button' %>
+		</div>
+	</fieldset>
+	
 <% end %>
+

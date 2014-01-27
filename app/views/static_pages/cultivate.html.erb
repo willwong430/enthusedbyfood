@@ -1,0 +1,47 @@
+<% provide(:title, 'Cultivate your knowledge, fellow foodies') %>
+
+<h2>Cultivate the foodie database</h2>
+<div class="cultviate form">
+<%= form_for @food do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	<div class="field">
+		<%= f.text_field :name, placeholder: "Enthused by..." %>
+		<span class="button">
+			<%= f.submit "Cultivate", class: "btn btn-primary btn-success", id: "cultivate_button"%>
+		</span>
+	</div>
+<% end %>
+</div>
+
+<div class="row">	
+	<aside class="col-sm-3 col-md-3 col-lg-3">
+		<div class="bs-sidebar hidden-print" role="complementary">
+			<ul class="nav bs-sidenav">
+				<h4 id="cultivate-list-title">The community has been enthused by:</h4>
+				<% @foods.each do |food| %>
+				<li>
+					<a href="#<%= food.name %>">
+					<%= food.name.humanize.downcase.singularize %>
+					</a>
+					<ul class="nav">
+						<li><a href="#history">History</a></li>
+						<li><a href="#tidbits">Tidbits</a></li>
+						<li><a href="#facts">Facts</a></li>
+						<li><a href="#Didya">Did you know?</a></li>
+					</ul>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+	</aside>
+	
+	<div class="col-sm-8 col-md-8 col-lg-8" data-spy="scroll" data-target="#bs-sidebar">
+		<ul class="cultivate_list_wrap">
+			<% @food_array.each do |food| %>
+				<li class="cultivate_list" id="<%= @food_name %>">
+					<%= food %>
+				</li>
+			<% end %>
+		</ul>
+	</div>
+</div>

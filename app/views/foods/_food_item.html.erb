@@ -1,0 +1,13 @@
+<li class="<%= food_item.id %>">
+	<% if !food_item.image.blank? %>
+		<div class="food-image"> 
+
+		</div>
+	<% end %>
+	<p class="foodMeta">
+		<h5>
+			<%= link_to food_item.name.downcase.humanize.singularize, food_item, class: "food-name" %>
+		</h5>
+	</p>
+	<div class="clear"></div>
+</li>

@@ -14,4 +14,13 @@ FactoryGirl.define do
     content "Lorem ipsum"
     user
   end
+  
+  factory :detail do
+    who "The Dude"
+    what "White Russians"
+    where "California"
+    why "the dude abides"
+    how "10"
+    activity
+  end 
 end

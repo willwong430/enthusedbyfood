@@ -1,12 +1,14 @@
-<a href="<%= user_path(current_user) %>">
-	<%= gravatar_for current_user, size: 52 %>
-</a>
-<h1>
-	<%= current_user.name %>
-</h1>
-<span>
-	<%= link_to "view my HIP Tree", current_user %>
+<% if @user.image.blank? %>
+		<%= gravatar_for @user, size: 52 %>
+		<%= link_to @user.name, @user %>
+<% else %>
+<a id="user_image" data-toggle="modal" href="#userModal"><%= image_tag @user.image_url(:avatar).to_s %></a>
+<%= render 'users/modal_avatar' %>
+<%= @user.name %>
+<% end %>
+<span class="link-class">
+	<%= link_to "view profile", @user, class: 'link-class' %>
 </span>
 <span>
-	<%= pluralize(current_user.activities.count, "activity") %>
+	<%= pluralize(@user.activities.count, "adventure") %>
 </span>

@@ -1,2 +1,8 @@
-$("#follow_form").html("<%= escape_javascript(render('users/follow')) %>")
-$("#followers").html('<%= @user.followers.count %>')
+<% if @user %>
+	$("#follow_form").html("<%= escape_javascript(render('users/follow')) %>")
+	$("#followers").html('Enthused by: <br /><%= @user.followers.count %> foodies')
+<% elsif @food %>
+	$("#follow_form").html("<%= escape_javascript(render('foods/follow')) %>")
+<% else %>
+	$("#follow_form").html("<%= escape_javascript(render('chefs/follow')) %>")
+<% end %>

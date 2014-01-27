@@ -7,4 +7,19 @@ module UsersHelper
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
     image_tag(gravatar_url, alt: user.name, class: "gravatar")
   end
+  
+  def image_link(user, options = {})
+    link = options[:link] || user
+    image = options[:image] || :icon
+    image_options = { title: user.name, alt: user.name }
+    unless options[:image_options].nil?
+      image_options.merge!(options[:image_option])
+    end
+    link_options = { title: user.name }
+    unless options[:link_options].nil?
+      link_options.merge!(options[:link_options])
+    end
+    content = image_tag(user.avatar, image_options)
+    link_to(content, link, link_options)
+  end
 end

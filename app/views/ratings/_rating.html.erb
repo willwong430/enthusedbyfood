@@ -1,0 +1,13 @@
+<li class="ratings_list">
+	<span>
+		<%= @rating.name %>
+		<%= link_to "(edit list)", edit_rating_path(@rating), class: 'list_edit' %>
+	</span>
+	<ol class="list details">
+		<% @rating.lists.each do |list| %>
+			<li>
+				<%= list.content %>
+			</li>
+		<% end %>
+	</ol>
+</li>

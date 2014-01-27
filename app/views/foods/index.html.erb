@@ -1,0 +1,54 @@
+<div class="row">
+	<div class="mainContent">
+		<div class="mainContentFloat">
+			<h2>Explore the world through <span id="foodTitle">FOOD</span></h2>
+			<div class="exploreFoods">
+				<%= form_tag foods_path, :method => 'get', id: "food_search" do %>
+					<%= text_field_tag :search, params[:search], id: "food_name" %>
+					<%= submit_tag "Explore", :name => nil, id: "search-button" %>
+				<div class="fieldsToSearch">
+					<p id="food_fields">Fields to search (ingredient, dish, chef, restaurant, culture, country, continent)</p>
+				</div>
+				<div class="clear"></div>
+				<% end %>
+			</div>
+			
+			<div class="trendingFood">
+				<div class="col-sm-5 col-md-5 col-lg-5" id="trending_community">
+					<h4>Foods cultivated by the community</h4>
+					<div class="allFood">
+						<%= render 'foods'%>
+					</div>
+				</div>
+
+				<div class="col-sm-5 col-md-5 col-lg-5" id="trending_world">
+					<h4><% @date = Date.today %>
+							<%= @date.strftime("%B") %>'s Trending Foods
+					</h4>
+					<p>
+						Based on the community and on Yelp reviews that have received 3 or more stars.<br />The brilliant engineers of Enthused have hacked Yelp reviews and filtered the trending ingredients, dishes, and restaurants. 
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-5 col-md-5 col-lg-5" id="tags-index">
+		<div class="tag_cloud" id="trending_community">
+			<h4>Trending tags in the community</h4>
+			<% tag_cloud Activity.tag_counts, %w{s m l} do |tag, css_class| %>
+				<%= link_to tag.name, tag_path(tag.name), class: css_class %>
+			<% end %>
+		</div>
+	</div>
+	
+	<div class="col-sm-5 col-md-5 col-lg-5">
+		<div class="chefs-index">
+			<h4 class="food-profile">Chefs in the Enthused community</h4>
+			<%= render 'chefs/chefs'%>
+		</div>
+	</div>
+	
+</div>
