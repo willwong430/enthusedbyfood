@@ -10,6 +10,7 @@ $grayMediumLight: #eaeaea;
 /* Universal */
 
 body {
+	height: 100%;
 	padding-top: 8px;
 	overflow: auto;
 	background-color: #EEE;
@@ -31,6 +32,9 @@ textarea {
 }
 
 .container {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
 	max-width: none !important;
 	width: 970px;
 	background-color: #FFF;

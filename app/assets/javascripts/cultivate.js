@@ -1,4 +1,4 @@
-$(function() {
+(function() {
 	var $sidebar = $('#ratings_side');
 	$sidebar.affix({
 		offset: {
@@ -12,4 +12,4 @@ $(function() {
 	$('.rating-list-section').scrollspy({
 		target: '#ratings_lists'
 	})
-})
+})();
