@@ -1,11 +1,11 @@
-$(function() {
-	$("select").change(function() {
+$(function () {
+	$("select").change(function () {
 		var attached = $("select option:selected").val();
-		if (attached == "photo") {
+		if (attached === "photo") {
 			$("#attach_photo").show();
 			$("#attach_link").hide();
 		}
-		else if (attached == "link") {
+		else if (attached === "link") {
 			$("#attach_link").show();
 			$("#attach_photo").hide();
 		}
@@ -15,6 +15,3 @@ $(function() {
 		}
 	});
 })();
-
-
-
