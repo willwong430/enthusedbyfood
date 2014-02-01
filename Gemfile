@@ -12,6 +12,7 @@ gem 'carrierwave'
 gem 'oauth', '0.4.7'
 gem 'acts-as-taggable-on'
 gem 'route_downcaser'
+gem 'nokogiri', '~> 1.6.1'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
