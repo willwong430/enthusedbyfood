@@ -29,7 +29,6 @@ class StaticPagesController < ApplicationController
     @foods = Food.search(params[:search])
 
     require "net/http"
-    require "nokogiri"
     require 'oauth'
     
     base_uri = "http://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=xml&exsentences=10&explaintext=&exsectionformat=plain&titles="
