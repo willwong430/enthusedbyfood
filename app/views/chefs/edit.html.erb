@@ -1,0 +1,63 @@
+<div class="row">
+	<div>
+		<h2 id="chef-name" class="chef-name"><%= @chef.name.titleize %></h2>
+		<div class="col-sm-3 col-md-3 col-lg-3">
+			<div id="chef-profile-image">
+				<% if @chef.image.blank? %>
+					<p style="font-size: 0.8em">(Current profile picture)</p>
+					<%= image_tag('default_chef.png') %>
+				<% else %>
+					<%= image_tag @chef.main_image, class: "chef-profile-image",
+																					alt: h(@chef.name) %>
+				<% end %>
+				<%= form_for @chef do |f| %>
+					<span class="fileupload fileupload-new" data-provides="fileupload">
+						<div class="fileupload-preview thumbnail" style="width: 200px; height: 150px"></div>
+						<span class="btn btn-file" id="button-cust">
+							<span class="fileupload-new">Show</span>
+								<%= f.file_field :image, :as => :file %>
+							<span class="fileupload-exists">Change</span>
+							<input type="file" />
+						</span>
+						<a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
+					</span>
+					<div class="button">
+						<%= f.submit "Upload", class: "btn btn-primary btn-success", id: 'search-button' %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+		<div class="col-sm-8 col-md-8 col-lg-8" id="chef-description" >
+			<div>
+				<h4 class="chef-profile">Chef Profile</h4>
+				<%= form_for @chef do |f| %>
+					<%= render 'shared/error_messages', object: f.object %>
+					<div class="field">
+						<%= f.label :content, "chef benefits" %>
+						<%= f.text_field :content %>
+					</div>
+					<div class="button">
+						<%= f.submit "Post", class: "btn btn-primary btn-success", id: 'search-button' %>
+					</div>
+				<% end %>
+				<p>Texture</p>
+				<p></p>
+			</div>
+			<div>
+				<h4 class="chef-profile">chef benefits</h4>
+				<p>List of 8 health benefits</p>
+				<%= @xml_1 %>
+			</div>
+			<div>
+				<h4 class="chef-profile">chef bites</h4>
+				<p>8 Interesting tidbits about the <%= @chef.name %></p>
+			</div>
+			<div class="chef-posted">
+				<h4 class="chef-profile">Recent Activity</h4>
+				<p>Images shared by community so far</p>
+				<p>People enthused with the chef so far</p>
+				<p>Related links shared by community so far</p>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,62 @@
+<div class="row">
+	<div>
+		<h2 id="food-name" class="food-name"><%= @food.name.titleize %></h2>
+		<div class="col-sm-3 col-md-3 col-lg-3">
+			<div id="food-profile-image">
+				<% if @food.image.blank? %>
+					<p style="font-size: 0.8em">(Current profile picture)</p>
+					<%= image_tag('default_food.png') %>
+				<% else %>
+					<%= image_tag @food.image_url(:thumbnail), class: "food-profile-image",
+																					alt: h(@food.name) %>
+				<% end %>
+				<%= form_for @food do |f| %>
+					<span class="fileupload fileupload-new" data-provides="fileupload">
+						<span class="btn btn-file" id="button-cust">
+							<span class="fileupload-new">Edit</span>
+								<%= f.file_field :image, :as => :file %>
+							<span class="fileupload-exists">Change</span>
+							<input type="file" />
+						</span>
+						<a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
+					</span>
+					<div class="button">
+						<%= f.submit "Upload", class: "btn btn-primary btn-success", id: 'search-button' %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+		<div class="col-sm-8 col-md-8 col-lg-8" id="food-description" >
+			<div>
+				<h4 class="food-profile">Food Profile</h4>
+				<%= form_for @food do |f| %>
+					<%= render 'shared/error_messages', object: f.object %>
+					<div class="field">
+						<%= f.label :content, "Food benefits" %>
+						<%= f.text_field :content %>
+					</div>
+					<div class="button">
+						<%= f.submit "Post", class: "btn btn-primary btn-success", id: 'search-button' %>
+					</div>
+				<% end %>
+				<p>Texture</p>
+				<p></p>
+			</div>
+			<div>
+				<h4 class="food-profile">Food benefits</h4>
+				<p>List of 8 health benefits</p>
+				<%= @xml_1 %>
+			</div>
+			<div>
+				<h4 class="food-profile">Food bites</h4>
+				<p>8 Interesting tidbits about the <%= @food.name %></p>
+			</div>
+			<div class="food-posted">
+				<h4 class="food-profile">Recent Activity</h4>
+				<p>Images shared by community so far</p>
+				<p>People enthused with the food so far</p>
+				<p>Related links shared by community so far</p>
+			</div>
+		</div>
+	</div>
+</div>

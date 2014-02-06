@@ -3,6 +3,11 @@
 	$("#followers").html('Enthused by: <br /><%= @user.followers.count %> foodies')
 <% elsif @food %>
 	$("#follow_form").html("<%= escape_javascript(render('foods/unfollow')) %>")
-<% else %>
+	$("#food-stats").html("<%= pluralize(@food.followers.count, "Follower") %>")
+<% elsif @chef %>
 	$("#follow_form").html("<%= escape_javascript(render('chefs/unfollow')) %>")
+	$("#chef-stats").html("<%= pluralize(@chef.followers.count, "Follower") %>")
+<% elsif @culture %>
+	$("#follow_form").html("<%= escape_javascript(render('cultures/unfollow')) %>")
+	$("#culture-stats").html("<%= pluralize(@culture.followers.count, "Follower") %>")
 <% end %>

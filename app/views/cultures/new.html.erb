@@ -1,0 +1,14 @@
+<% if current_user.admin? %>
+
+<div class="row">
+	<div class="col-lg-6 col-lg-offset-3">
+		<%= form_for(@culture) do |f| %>
+
+			<%= render 'shared/error_messages', object: f.object %>
+			<%= render 'fields', f: f %>		
+			<%= f.submit "Create culture", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>
+
+<% end %>

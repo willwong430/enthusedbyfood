@@ -12,7 +12,7 @@
 			<% else %>
 				<h4><%= @user.name %>'s Bowl</h4>
 			<% end %>
-			<% if @user.ratings.empty? %>
+			<% if current_user?(@user) && @user.ratings.empty? %>
 			<p>No lists yet!</p>
 			<div class="add-list">
 			<%= link_to "Add a List", new_rating_path, id: "new_link", remote: true %>

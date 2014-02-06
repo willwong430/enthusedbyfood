@@ -1,0 +1,5 @@
+<%= form_for(current_user.relationships.build(culture_id: @culture.id),
+						 remote: true) do |f| %>
+	<div><%= f.hidden_field :culture_id %></div>
+	<%= f.submit "Follow", class: "btn btn-sm" %>
+<% end %>

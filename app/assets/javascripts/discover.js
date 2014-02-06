@@ -107,6 +107,7 @@ $(function() {
 
 		google.maps.event.addDomListener(window, 'load', initialize);
 		
+		
 		$("body").on("click", '#users_index .pagination a', 
 			function() {
 				$.getScript(this.href);

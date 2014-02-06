@@ -20,7 +20,7 @@
 	</div>
 	<div class="stats foods">
 		<span class="stats_first">
-			<a href="<%= following_user_path(@user) %>">
+			<a href="<%= user_path %>/following#followed_foods">
 				<strong><span class="stat" id="following">
 					Enthused with: <br />
 					<%= pluralize(@user.followed_foods.count, "Food") %>

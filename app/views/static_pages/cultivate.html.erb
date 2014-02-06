@@ -20,7 +20,7 @@
 				<h4 id="cultivate-list-title">The community has been enthused by:</h4>
 				<% @foods.each do |food| %>
 				<li>
-					<a href="#<%= food.name %>">
+					<a href="/food/<%= food.name %>">
 					<%= food.name.humanize.downcase.singularize %>
 					</a>
 					<ul class="nav">

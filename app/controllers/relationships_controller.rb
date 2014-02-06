@@ -16,6 +16,10 @@ class RelationshipsController < ApplicationController
       @chef = Chef.find(params[:relationship][:chef_id])
       current_user.patron!(@chef)
       respond_with @chef
+    elsif params[:relationship][:culture_id]
+      @culture = Culture.find(params[:relationship][:culture_id])
+      current_user.patron!(@culture)
+      respond_with @culture
     end
   end
   

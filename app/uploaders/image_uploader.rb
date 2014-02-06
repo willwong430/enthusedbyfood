@@ -43,7 +43,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   end
   #   
   version :thumbnail do
-    process :resize_to_limit => [400, 400]
+    process :resize_to_limit => [220, 280]
   end
   
   version :avatar do

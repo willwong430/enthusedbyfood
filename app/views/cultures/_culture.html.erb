@@ -1,0 +1,13 @@
+<li class="<%= culture_item.id %>">
+	<% if !culture_item.image.blank? %>
+		<div class="culture-image"> 
+
+		</div>
+	<% end %>
+	<p class="cultureMeta">
+		<h5>
+			<%= link_to culture_item.name.downcase.humanize.singularize, culture_item, class: "culture-name" %>
+		</h5>
+	</p>
+	<div class="clear"></div>
+</li>

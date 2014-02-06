@@ -7,28 +7,51 @@
 					<p style="font-size: 0.8em">(Beautiful image of food coming soon)</p>
 					<%= image_tag('default_food.png') %>
 				<% else %>
-					<%= image_tag @food.main_image, class: "food-profile-image",
+					<%= image_tag @food.image_url(:thumbnail), class: "food-profile-image",
 																					alt: h(@food.name) %>
 				<% end %>
 			</div>
 			<%= render 'follow_form' %>
+			<p id="food-stats"><%= pluralize(@food.followers.count, "Follower") %></p>
+			<% if current_user.admin? %>
+				<%= link_to "edit data", edit_food_path(@food) %>
+			<% end %>
 		</div>
 		<div class="col-sm-8 col-md-8 col-lg-8" id="food-description" >
-			<div>
-				<h4 class="food-profile">Food Profile</h4>
-				<p>Main Regions of Origin</p>
-				<p>Texture</p>
-				<p></p>
+			<h3 class="food-profile">Food Profile</h3>
+			<p>Who What Where When Why How</p>
+			<div class="panel-group" id="accordion">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title">
+							<h4><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Top 3 Most Interesting Facts about <%= @food.name %></a>
+							</h4>
+						</div>
+					</div>
+					<div class="panel-collapse collapse in" id="collapseOne">
+						<div class="panel-body">
+							<%= @food.content%>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div>
-				<h4 class="food-profile">Food benefits</h4>
-				<p>List of 8 health benefits</p>
-				<%= @xml_1 %>
+			<div class="panel-group" id="accordion">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title">
+							<h4><a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Health Benefits</a>
+							</h4>
+						</div>
+					</div>
+					<div class="panel-collapse collapse in" id="collapseTwo">
+						<div class="panel-body">
+							<%= @food.content%>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div>
-				<h4 class="food-profile">Food bites</h4>
-				<p>8 Interesting tidbits about the <%= @food.name %></p>
-			</div>
+					<!-- <ul><a>History</a></ul>
+										<ul><a>Cultural Prevalence</a></ul>	 -->
 			<div class="food-posted">
 				<h4 class="food-profile">Recent Activity</h4>
 				<p>Images shared by community so far</p>

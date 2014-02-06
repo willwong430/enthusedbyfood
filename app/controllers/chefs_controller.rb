@@ -9,7 +9,6 @@ class ChefsController < ApplicationController
   def show
     @activity = current_user.activities.build
     @chef = Chef.find(params[:id])
-    chef_name = @chef.name.gsub(" ", "_").singularize
   end
 
   def new
@@ -28,6 +27,21 @@ class ChefsController < ApplicationController
       redirect_to chefs_path(@chef)
     else
       render 'new'
+    end
+  end
+  
+  def edit
+    @activity = current_user.activities.build
+    @chef = Chef.find_by_name(params[:id])
+  end
+  
+  def update
+    @chef = Chef.find_by_name(params[:id])
+    if @chef.update_attributes(chef_params)
+      flash[:success] = "Chef profile updated"
+      redirect_to @chef 
+    else
+      render 'edit'
     end
   end
   

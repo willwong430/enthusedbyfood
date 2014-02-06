@@ -11,4 +11,4 @@
     $('.rating-list-section').scrollspy({
         target: '#ratings_lists'
     });
-    }());
+    }(jQuery));

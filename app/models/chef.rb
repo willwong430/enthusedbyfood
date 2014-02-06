@@ -14,14 +14,6 @@ class Chef < ActiveRecord::Base
     end
   end
   
-  def slug 
-    self.name.downcase.gsub(" ", "-")
-  end
-  
-  def to_param
-    "#{id}-#{slug}"
-  end
-  
   def main_image
     self.image.nil? ? "default_chef.png" : self.image
   end

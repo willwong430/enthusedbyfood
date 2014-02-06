@@ -2,21 +2,25 @@
 <html>
 	<head>
   	<title><%= full_title(yield(:title)) %></title>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  	<%= stylesheet_link_tag    "application", media: "all",
-																					    "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application" %>
+  	<%= stylesheet_link_tag    "application", media: "all" %>
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfMPA6icIoHssx7WWO6TxCjgy5-x_9xjY&sensor=false"></script>
 		
   	<%= csrf_meta_tags %>
 		<%= render 'layouts/shim' %>
 	</head>
 	<body>
+		<div id="wrap">
 		<%= render 'layouts/header' %>
+			<div class="container" id="inner-container">
+				<% flash.each do |key, value| %>
+					<%= content_tag(:div, value, class: "alert alert-#{key}") %>
+				<% end %>
+				<%= yield %>
+			</div>
+		</div>
+		
 		<div class="container">
-			<% flash.each do |key, value| %>
-				<%= content_tag(:div, value, class: "alert alert-#{key}") %>
-			<% end %>
-			<%= yield %>
 			<%= render 'layouts/footer' %>
 			<%= debug(params) if Rails.env.development? %>
 		</div>

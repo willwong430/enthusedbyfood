@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   belongs_to :user_profile
   has_many :activities, dependent: :destroy
   has_many :details, through: :activities
-  has_many :ratings
-  has_many :lists, through: :ratings
+  has_many :ratings, dependent: :destroy
+  has_many :lists, through: :ratings, dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
   has_many :reverse_relationships, foreign_key: "followed_id", 
@@ -89,6 +89,18 @@ class User < ActiveRecord::Base
   
   def unpatron!(chef)
     relationships.find_by(chef_id: chef.id).destroy
+  end
+  
+  def extolling?(culture)
+    relationships.find_by(culture_id: culture.id)
+  end
+  
+  def extol!(culture)
+    relationships.create!(culture_id: culture.id)
+  end
+  
+  def unextol!(culture)
+    relationships.find_by(culture_id: culture.id).destroy
   end
   
   private

@@ -1,5 +1,6 @@
 class FoodsController < ApplicationController
   before_action :signed_in_user
+  before_action :admin_user, only: :edit
   
   def index
     @activity = current_user.activities.build
@@ -32,10 +33,29 @@ class FoodsController < ApplicationController
     end
   end
   
+  def edit
+    @activity = current_user.activities.build
+    @food = Food.find_by_name(params[:id])
+  end
+  
+  def update
+    @food = Food.find_by_name(params[:id])
+    if @food.update_attributes(food_params)
+      flash[:success] = "Food profile updated"
+      redirect_to @food 
+    else
+      render 'edit'
+    end
+  end
+  
   private 
   
     def food_params
-      params.require(:food).permit(:name, :image, :thumbnail)
+      params.require(:food).permit(:name, :image, :avatar, :content)
+    end
+    
+    def admin_user
+      redirect_to(root_path) unless current_user.admin?
     end
     
 end
