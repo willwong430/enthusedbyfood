@@ -17,3 +17,4 @@
 //= require bootstrap-fileupload
 //= require bootstrap
 //= require jquery.ui.all
+//= require tree .
