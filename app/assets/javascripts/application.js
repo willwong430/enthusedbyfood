@@ -11,7 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require_self
-//= require discover
+//= require form
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-fileupload
