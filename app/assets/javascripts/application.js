@@ -16,5 +16,6 @@
 //= require bootstrap-fileupload
 //= require bootstrap
 //= require hello
+//= require form
 //= require jquery.ui.all
 //= require_tree .
