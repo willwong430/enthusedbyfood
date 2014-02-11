@@ -15,7 +15,5 @@
 //= require jquery_ujs
 //= require bootstrap-fileupload
 //= require bootstrap
-//= require hello
-//= require form
-//= require jquery.ui.all
+//= require jquery.ui.draggable
 //= require_tree .
