@@ -1,0 +1,5 @@
+<%= form_for(current_user.relationships.build(cuisine_id: @cuisine.id),
+						 remote: true) do |f| %>
+	<div><%= f.hidden_field :cuisine_id %></div>
+	<%= f.submit "Follow", class: "btn btn-sm" %>
+<% end %>

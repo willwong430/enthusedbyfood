@@ -1,5 +1,5 @@
-class Food < ActiveRecord::Base
-  has_many :reverse_relationships, foreign_key: "food_id",
+class Cuisine < ActiveRecord::Base
+  has_many :reverse_relationships, foreign_key: "cuisine_id",
                                    class_name:  "Relationship",
                                    dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
@@ -19,7 +19,7 @@ class Food < ActiveRecord::Base
   end
 
   def to_param
-    "#{slug}"
+    "#{id}-#{slug}"
   end
   
   def main_image

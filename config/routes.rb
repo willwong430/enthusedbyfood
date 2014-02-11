@@ -16,6 +16,7 @@ Agreedupon1::Application.routes.draw do
   resources :foods,    path: 'food'
   resources :chefs,    path: 'chef'
   resources :cultures, path: 'culture'
+  resources :cuisines, path: 'cuisine'
   resources :user_profiles
   root to: 'home#index', :controller => 'home'
   match '/signup',    to: 'users#new',              via: 'get'

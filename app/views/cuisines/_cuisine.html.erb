@@ -1,0 +1,14 @@
+<li class="<%= cuisine.id %>">
+	<% if cuisine.image.blank? %>
+		<%= image_tag('default_foodcuisine.png') %>
+		<%= link_to cuisine.name, cuisine %>
+		<% if current_user.admin? && !current_user?(cuisine) %>
+		| <%= link_to "delete", cuisine, method: :delete,
+		data: { confirm: "You sure?" } %>
+		<% end %>
+	<% else %>	
+		<%= link_to (image_tag cuisine.image_url(:avatar).to_s), cuisine, id: "cuisine-image" %>
+		<%= link_to cuisine.name, cuisine, class: "cuisine-name" %>
+	<div class="clear"></div>
+	<% end %>
+</li>

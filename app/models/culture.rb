@@ -19,7 +19,7 @@ class Culture < ActiveRecord::Base
   end
 
   def to_param
-    "#{slug}"
+    "#{id}-#{slug}"
   end
   
   def main_image

@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :followers, through: :reverse_relationships, source: :follower
   has_many :followed_foods, through: :relationships, source: :food
   has_many :followed_chefs, through: :relationships, source: :chef
+  has_many :followed_cuisines, through: :relationships, source: :cuisine
   before_save { self.email = email.downcase }
   before_create :create_remember_token
   validates :name,  presence: true, length: { maximum: 50 }
@@ -101,6 +102,18 @@ class User < ActiveRecord::Base
   
   def unextol!(culture)
     relationships.find_by(culture_id: culture.id).destroy
+  end
+  
+  def adoring?(cuisine)
+    relationships.find_by(cuisine_id: cuisine.id)
+  end
+  
+  def adore!(cuisine)
+    relationships.create!(cuisine_id: cuisine.id)
+  end
+  
+  def unadore!(cuisine)
+    relationships.find_by(cuisine_id: cuisine.id).destroy
   end
   
   private

@@ -10,4 +10,7 @@
 <% elsif @culture %>
 	$("#follow_form").html("<%= escape_javascript(render('cultures/follow')) %>")
 	$("#culture-stats").html("<%= pluralize(@culture.followers.count, "Follower") %>")
+<% elsif @cuisine %>
+	$("#follow_form").html("<%= escape_javascript(render('cuisines/follow')) %>")
+	$("#cuisine-stats").html("<%= pluralize(@cuisine.followers.count, "Follower") %>")
 <% end %>

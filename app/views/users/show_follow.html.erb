@@ -54,7 +54,7 @@
 		
 			<div id="dishes">
 			<h4 class="following_list" >
-			<%= @title %> <%= pluralize(@users.count, "Dish") %>		
+			<%= @title %> <%= pluralize(@user.followed_foods.count, "Dish") %>		
 			</h4>
 		</div>		
 	
@@ -66,8 +66,13 @@
 		
 			<div id="cultures">
 			<h4 class="following_list" >
-			<%= @title %> <%= pluralize(@users.count, "Culture") %>
-			</h4>		
+			<%= @title %> <%= pluralize(@user.followed_cuisines.count, "Cuisine") %>
+			</h4>
+			<% if @cuisines.any? %>
+			<ul class="cuisines">
+				<%= render 'cuisines/cuisines' %>
+			</ul>
+			<% end %>
 		</div>
 		
 			<div id="regions">

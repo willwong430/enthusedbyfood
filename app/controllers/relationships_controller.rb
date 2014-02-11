@@ -20,6 +20,10 @@ class RelationshipsController < ApplicationController
       @culture = Culture.find(params[:relationship][:culture_id])
       current_user.patron!(@culture)
       respond_with @culture
+    elsif params[:relationship][:cuisine_id]
+      @cuisine = Cuisine.find(params[:relationship][:cuisine_id])
+      current_user.adore!(@cuisine)
+      respond_with @cuisine
     end
   end
   
@@ -27,6 +31,7 @@ class RelationshipsController < ApplicationController
     @user = Relationship.find(params[:id]).followed
     @food = Relationship.find(params[:id]).food
     @chef = Relationship.find(params[:id]).chef
+    @cuisine = Relationship.find(params[:id]).cuisine
     if @user
       current_user.unfollow!(@user)
       respond_with @user
@@ -36,6 +41,9 @@ class RelationshipsController < ApplicationController
     elsif @chef
       current_user.unpatron!(@chef)
       respond_with @chef
+    elsif @cuisine
+      current_user.unadore!(@cuisine)
+      respond_with @cuisine
     end
   end  
 

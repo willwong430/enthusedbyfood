@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140206032411) do
+ActiveRecord::Schema.define(version: 20140211182453) do
 
   create_table "activities", force: true do |t|
     t.string   "content"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 20140206032411) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image"
+  end
+
+  create_table "cuisines", force: true do |t|
+    t.string   "name"
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image"
+    t.text     "properties"
   end
 
   create_table "cultures", force: true do |t|
@@ -103,6 +112,7 @@ ActiveRecord::Schema.define(version: 20140206032411) do
     t.integer  "food_id"
     t.integer  "chef_id"
     t.integer  "culture_id"
+    t.integer  "cuisine_id"
   end
 
   add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"

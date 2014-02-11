@@ -64,6 +64,7 @@ class UsersController < ApplicationController
     @users = @user.followed_users.paginate(page: params[:page])
     @foods = @user.followed_foods.paginate(page: params[:page])
     @chefs = @user.followed_chefs.paginate(page: params[:page])
+    @cuisines = @user.followed_cuisines.paginate(page: params[:page])
     render 'show_follow'
   end
   

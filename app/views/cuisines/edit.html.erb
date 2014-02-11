@@ -1,0 +1,63 @@
+<div class="row">
+	<div>
+		<h2 id="cuisine-name" class="cuisine-name"><%= @cuisine.name.titleize %></h2>
+		<div class="col-sm-3 col-md-3 col-lg-3">
+			<div id="cuisine-profile-image">
+				<% if @cuisine.image.blank? %>
+					<p style="font-size: 0.8em">(Current profile picture)</p>
+					<%= image_tag('default_cuisine.png') %>
+				<% else %>
+					<%= image_tag @cuisine.image_url(:thumbnail), class: "cuisine-profile-image",
+																					alt: h(@cuisine.name) %>
+				<% end %>
+				<%= form_for @cuisine do |f| %>
+					<span class="fileupload fileupload-new" data-provides="fileupload">
+						<div class="fileupload-preview thumbnail" style="width: 200px; height: 150px"></div>
+						<span class="btn btn-file" id="button-cust">
+							<span class="fileupload-new">Show</span>
+								<%= f.file_field :image, :as => :file %>
+							<span class="fileupload-exists">Change</span>
+							<input type="file" />
+						</span>
+						<a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
+					</span>
+					<div class="button">
+						<%= f.submit "Upload", class: "btn btn-primary btn-success", id: 'search-button' %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+		<div class="col-sm-8 col-md-8 col-lg-8" id="cuisine-description" >
+			<div>
+				<h4 class="cuisine-profile">Cuisine Profile</h4>
+				<%= form_for @cuisine do |f| %>
+					<%= render 'shared/error_messages', object: f.object %>
+					<div class="field">
+						<%= f.label :content, "cuisine benefits" %>
+						<%= f.text_field :content %>
+					</div>
+					<div class="button">
+						<%= f.submit "Post", class: "btn btn-primary btn-success", id: 'search-button' %>
+					</div>
+				<% end %>
+				<p>Texture</p>
+				<p></p>
+			</div>
+			<div>
+				<h4 class="cuisine-profile">cuisine benefits</h4>
+				<p>List of 8 health benefits</p>
+				<%= @xml_1 %>
+			</div>
+			<div>
+				<h4 class="cuisine-profile">cuisine bites</h4>
+				<p>8 Interesting tidbits about the <%= @cuisine.name %></p>
+			</div>
+			<div class="cuisine-posted">
+				<h4 class="cuisine-profile">Recent Activity</h4>
+				<p>Images shared by community so far</p>
+				<p>People enthused with the cuisine so far</p>
+				<p>Related links shared by community so far</p>
+			</div>
+		</div>
+	</div>
+</div>

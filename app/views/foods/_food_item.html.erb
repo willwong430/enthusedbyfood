@@ -1,13 +1,14 @@
 <li class="<%= food_item.id %>">
-	<% if !food_item.image.blank? %>
-		<div class="food-image"> 
-
-		</div>
-	<% end %>
-	<p class="foodMeta">
-		<h5>
-			<%= link_to food_item.name.downcase.humanize.singularize, food_item, class: "food-name" %>
-		</h5>
-	</p>
+	<% if food_item.image.blank? %>
+		<%= image_tag('default_thumbnail.png') %>
+		<%= link_to food_item.name, food_item %>
+		<% if current_user.admin? %>
+		| <%= link_to "delete", food_item, method: :delete,
+		data: { confirm: "You sure?" } %>
+		<% end %>
+	<% else %>	
+		<%= link_to (image_tag food_item.image_url(:avatar).to_s), food_item, id: "food-image" %>
+		<%= link_to food_item.name, food_item, class: "food-name" %>
 	<div class="clear"></div>
+	<% end %>
 </li>
