@@ -11,10 +11,9 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require_self
-//= require hello
+//= require discover
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-fileupload
 //= require bootstrap
 //= require jquery.ui.all
-//= require_tree .
