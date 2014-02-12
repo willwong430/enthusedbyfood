@@ -15,7 +15,12 @@
 //= require jquery_ujs
 //= require bootstrap-fileupload
 //= require bootstrap
+//= require cultivate
 //= require form
 //= require discover
+//= require foods
+//= require header
+//= require lists.js.coffee
+//= require sidebar
+//= require users
 //= require jquery.ui.all
-//= require_tree .
