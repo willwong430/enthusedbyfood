@@ -4,3 +4,7 @@
 require File.expand_path('../config/application', __FILE__)
 
 Agreedupon1::Application.load_tasks
+
+task :promote_admin => :environment do
+  User.first.update_attribute('admin', true)
+end
