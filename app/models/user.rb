@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   has_many :followed_cuisines, through: :relationships, source: :cuisine
   before_save { self.email = email.downcase }
   before_create :create_remember_token
-  after_update :set_admin
+  after_create :set_admin
   validates :name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   validates :email, presence:   true,
