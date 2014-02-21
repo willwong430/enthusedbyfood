@@ -52,4 +52,8 @@ class CulturesController < ApplicationController
       params.require(:culture).permit(:name, :image, :thumbnail, :content)
     end
     
+    def admin_user
+      redirect_to(root_path) unless current_user.admin?
+    end
+    
 end

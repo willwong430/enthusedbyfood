@@ -13,6 +13,7 @@ Agreedupon1::Application.routes.draw do
     resources :lists
   end
   resources :relationships, only: [:create, :destroy]
+  resources :product_types
   resources :foods,    path: 'food'
   resources :chefs,    path: 'chef'
   resources :cultures, path: 'culture'

@@ -13,7 +13,6 @@ $(function() {
 	});
 
 	function initialize() {
-		console.log("FUCK");
 		var bounds = new google.maps.LatLngBounds(
 			new google.maps.LatLng(40.367474,-74.552064),
 			new google.maps.LatLng(41.038966,-73.432832));

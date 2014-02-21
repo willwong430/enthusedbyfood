@@ -32,9 +32,11 @@
 		<div class="img-responsive" id="photo" data-toggle="tooltip" title="<%= tree_item.content %>"><%= image_tag tree_item.image_url(:standard).to_s %>
 		</div>	
 	<% end %>
+	<% unless tree_item.tag_list.blank? %>
 	<div class="tagged">
 		Tags: <%= raw tree_item.tag_list.map { |t| link_to t, food_path(t) }.join(', ') %>
 	</div>
+	<% end %>
 	<div>
 	<%= render 'shared/delete', object: tree_item %>
 	</div>

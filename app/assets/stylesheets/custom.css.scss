@@ -106,11 +106,10 @@ p {
 	margin-bottom: 0px;
 	border-radius: 5px;
 /*	border: 1px solid #9E0508;*/
- 	li {
-    border-left: 1px solid #9E0508;
-    border-right: 1px solid #9E0508;
-
-	}
+/* 	li {
+/*    border-left: 1px solid #9E0508;*/
+/*    border-right: 1px solid #9E0508;*/
+ 
 	li:first-child {
 		border-left: 0;
 	}
@@ -176,6 +175,7 @@ p {
 .navbar-inverse > .navbar-collapse > ul > li:hover {
 	background-color: #9E0508;
 	border-radius: 10px;
+	border: 0px ;
 	a {
 		color: #fff;
 	}
@@ -609,6 +609,18 @@ aside {
 }
 
 #cultivate {
+	display: none;
+}
+
+#explore {
+	display: none;
+}
+
+#discover {
+	display: none;
+}
+
+#foodie {
 	display: none;
 }
 

@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require bootstrap-fileupload
 //= require bootstrap
+//= require bootstrap-notify
 //= require cultivate
 //= require form
 //= require discover

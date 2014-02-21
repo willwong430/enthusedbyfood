@@ -32,7 +32,7 @@ class ChefsController < ApplicationController
   
   def edit
     @activity = current_user.activities.build
-    @chef = Chef.find_by_name(params[:id])
+    @chef = Chef.find(params[:id])
   end
   
   def update

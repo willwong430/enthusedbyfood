@@ -11,6 +11,7 @@
  *= require_self
  *= require bootstrap
  *= require bootstrap-fileupload
+ *= require bootstrap-notify
  *= require jquery.ui.all
  *= require_tree .
  */

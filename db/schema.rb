@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140211182453) do
+ActiveRecord::Schema.define(version: 20140215172315) do
 
   create_table "activities", force: true do |t|
     t.string   "content"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20140211182453) do
     t.datetime "updated_at"
     t.string   "image"
     t.string   "content"
+    t.integer  "product_type_id"
   end
 
   create_table "lists", force: true do |t|
@@ -91,6 +92,23 @@ ActiveRecord::Schema.define(version: 20140211182453) do
   end
 
   add_index "photos", ["user_id", "created_at"], name: "index_photos_on_user_id_and_created_at"
+
+  create_table "product_fields", force: true do |t|
+    t.string   "name"
+    t.string   "field_type"
+    t.boolean  "required"
+    t.integer  "product_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "product_fields", ["product_type_id"], name: "index_product_fields_on_product_type_id"
+
+  create_table "product_types", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "ratings", force: true do |t|
     t.integer  "activity_id"

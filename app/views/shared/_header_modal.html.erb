@@ -1,25 +1,80 @@
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
-				</button>
-				<h3 id="myModalLabel">Mission statement for enthused_by_food</h3>
-			</div><!-- ./modal-header -->
+			<div id="mission">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
+					</button>
+					<h3 id="myModalLabel">Recent Activity from Community</h3>
+				</div><!-- ./modal-header -->
+				<div class="modal-body">
+					<p>
+						Here are updates of recent activity from fellow foodies you are following. If they shared photos from an amazing restaurant they recently visited, or if they shared an interesting link about a new dish from their favorite chef, the post will show up on your activity feed. The goal here on enthusedbyfood.com is to catalog food from around the world and build the first user-generated food database. <br />
 
-			<div class="modal-body">
-				<div id="mission">
-				<p>Log - Cultivate - Discover - Explore the world through food<p>
-				<p id="header-modal"><%= image_tag("enthused2.jpg") %></p>
-				</div>
-				<div id="cultivate">
-					<p>Hello</p>
-				</div>									
-			</div><!-- ./modal-body -->
-
-			<div class="modal-footer">
-				<button class="btn" data-dismiss="modal">Close</button>
-			</div> <!-- /.modal-footer -->
-		</div>
+						We've made it easy to share what's enthused you in the world of food, as well as learn about the world through food. Food unites us all.
+					</p>
+				</div><!-- modal-body -->
+				<div class="modal-footer">
+					<button class="btn" data-dismiss="modal">Close</button>
+				</div><!-- modal-footer -->
+			</div>
+			<div id="cultivate">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
+					</button>
+					<h3 id="myModalLabel">Cultivate Foodie Database</h3>
+				</div><!-- ./modal-header -->
+				<div class="modal-body">
+					<p>
+						A dish, an ingredient, a cuisine, or culture sparked an interest? <br /> Cultivate your knowledge while cultivating the foodie database at the same time. Our belief is that this is your database. The more you cultivate it, the bigger and better it will be. Press the search bar next to the 'Cultivate' button, and enter something you were enthused by. If that item has already been cultivated, information about it will appear. 
+					</p>
+				</div><!-- modal-body -->
+				<div class="modal-footer">
+					<button class="btn" data-dismiss="modal">Close</button>
+				</div><!-- modal-footer -->
+			</div>
+			<div id="explore">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
+					</button>
+					<h3 id="myModalLabel">Explore the foodie community</h3>
+				</div><!-- ./modal-header -->
+				<div class="modal-body">
+					<p>Look around the foodie community. See what foods, ingredients, and dishes have enthused fellow users. We've combed through yelp's data to see what is trending in the foodie community. Furthermore, you can see what enthused foodies are eating through their tags. Lastly, see what renowned chefs have joined our community.</p>
+				</div><!-- /.modal-body -->
+				<div class="modal-footer">
+					<button class="btn" data-dismiss="modal">Close</button>
+				</div> <!-- /.modal-footer -->
+			</div>
+			<div id="discover">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
+					</button>
+					<h3 id="myModalLabel">Discover statement for enthused_by_food</h3>
+				</div><!-- ./modal-header -->
+				<div class="modal-body">
+					<p>Part of our mission is to help you discover the world through food. Explore regions of the world, and the foodies in the region. Discover the food native to that region. </p>
+				</div><!-- /.modal-body -->
+				<div class="modal-footer">
+					<button class="btn" data-dismiss="modal">Close</button>
+				</div> <!-- /.modal-footer -->
+			</div>
+			
+			<div id="foodie">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
+					</button>
+					<h3 id="myModalLabel">User-generated content</h3>
+				</div><!-- ./modal-header -->
+				<div class="modal-body">
+					<p>Your profile page with your recent activity, your stats, and of the foodies, chefs, ingredients, dishes, cuisines you are following. 
+					Who doesn't love lists? Compile lists that further build the foodie database. Examples of lists: Your favorite ________ restaurants, Your favorite ingredients to use to cook with, Foods you have tried; Restaurants you want to check out. Lists can act a form of recommendation to friends and followers.</p>
+				</div><!-- /.modal-body -->
+				<div class="modal-footer">
+					<button class="btn" data-dismiss="modal">Close</button>
+				</div> <!-- /.modal-footer -->
+			</div>
+						
+		</div><!-- /.modal-content -->
 	</div> <!-- /.modal-dialog -->
 </div> <!-- /.modal -->

@@ -39,7 +39,7 @@
 		<div class="tag_cloud" id="trending_community">
 			<h4>Trending tags in the community</h4>
 			<% tag_cloud Activity.tag_counts, %w{s m l} do |tag, css_class| %>
-				<%= link_to tag.name, tag_path(tag.name), class: css_class %>
+				<%= link_to tag.name, food_path(tag.name), class: css_class %>
 			<% end %>
 		</div>
 	</div>

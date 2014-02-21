@@ -20,6 +20,7 @@ class ActivitiesController < ApplicationController
   end
   
   def destroy
+    session[:return_to] ||= request.referer
     @activity.destroy
     redirect_to session.delete(:return_to)
   end

@@ -32,10 +32,7 @@
 				<h4 class="chef-profile">Chef Profile</h4>
 				<%= form_for @chef do |f| %>
 					<%= render 'shared/error_messages', object: f.object %>
-					<div class="field">
-						<%= f.label :content, "chef benefits" %>
-						<%= f.text_field :content %>
-					</div>
+
 					<div class="button">
 						<%= f.submit "Post", class: "btn btn-primary btn-success", id: 'search-button' %>
 					</div>

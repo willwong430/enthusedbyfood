@@ -11,8 +11,9 @@
 	</head>
 	<body>
 		<div id="wrap">
-		<%= render 'layouts/header' %>
+			<%= render 'layouts/header' %>
 			<div class="container" id="inner-container">
+				<div class="notifications top-left"></div>
 				<% flash.each do |key, value| %>
 					<%= content_tag(:div, value, class: "alert alert-#{key}") %>
 				<% end %>
@@ -24,5 +25,18 @@
 			<%= render 'layouts/footer' %>
 			<%= debug(params) if Rails.env.development? %>
 		</div>
+		<script>
+			$(function () {
+				var message = 'Click on the chef icon for more info';
+				$('.top-left').notify({
+					message: { text: message },
+						 type: 'success',
+					fadeOut: {
+						delay: Math.floor(Math.random() * 500) + 3500
+					}
+				}).show();		
+			})();
+		</script>
+		
 	</body>
 </html>

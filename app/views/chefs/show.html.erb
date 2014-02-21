@@ -7,7 +7,7 @@
 				<p style="font-size: 0.8em">(Picture of chef coming soon)</p>
 				<%= image_tag('default_chef.png') %>
 				<% else %>
-				<%= image_tag @chef.main_image, class: "chef-profile-image",
+				<%= image_tag @chef.image_url(:thumbnail), class: "chef-profile-image",
 				alt: h(@chef.name) %>
 				<% end %>
 			</div>

@@ -1,13 +1,14 @@
 <% provide(:title, 'Cultivate your knowledge, fellow foodies') %>
 
 <h2>Cultivate the foodie database</h2>
+
 <div class="cultviate form">
 <%= form_for @food do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
 	<div class="field">
 		<%= f.text_field :name, placeholder: "Enthused by..." %>
 		<span class="button">
-			<%= f.submit "Cultivate", class: "btn btn-primary btn-success", id: "cultivate_button"%>
+		<%= f.submit "Cultivate", class: "btn btn-primary btn-success", id: "cultivate_button" %>
 		</span>
 	</div>
 <% end %>

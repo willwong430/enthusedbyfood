@@ -1,6 +1,6 @@
 class FoodsController < ApplicationController
   before_action :signed_in_user
-  before_action :admin_user, only: :edit
+  before_action :admin_user, only: [:edit, :destroy]
   
   def index
     @activity = current_user.activities.build
@@ -16,7 +16,7 @@ class FoodsController < ApplicationController
   end
 
   def new
-    @food = Food.new  
+    @food = Food.new
     respond_to do |format|
       format.html
     end
@@ -48,10 +48,16 @@ class FoodsController < ApplicationController
     end
   end
   
+  def destroy
+    @food = Food.find_by_name(params[:id])
+    @food.destroy
+    redirect_to root_path
+  end
+  
   private 
   
     def food_params
-      params.require(:food).permit(:name, :image, :avatar, :content)
+      params.require(:food).permit(:name, :image, :avatar, :content, :product_type_id)
     end
     
     def admin_user

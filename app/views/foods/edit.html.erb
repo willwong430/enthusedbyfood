@@ -15,13 +15,13 @@
 						<span class="btn btn-file" id="button-cust">
 							<span class="fileupload-new">Edit</span>
 								<%= f.file_field :image, :as => :file %>
-							<span class="fileupload-exists">Change</span>
+							<span class="fileupload-exists">Upload</span>
 							<input type="file" />
 						</span>
 						<a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
 					</span>
 					<div class="button">
-						<%= f.submit "Upload", class: "btn btn-primary btn-success", id: 'search-button' %>
+						<%= f.submit "Share", class: "btn btn-primary btn-success", id: 'search-button' %>
 					</div>
 				<% end %>
 			</div>
@@ -31,10 +31,14 @@
 				<h4 class="food-profile">Food Profile</h4>
 				<%= form_for @food do |f| %>
 					<%= render 'shared/error_messages', object: f.object %>
+					<%= f.hidden_field :product_type_id %>
 					<div class="field">
-						<%= f.label :content, "Food benefits" %>
-						<%= f.text_field :content %>
-					</div>
+						<%= f.fields_for :content, OpenStruct.new(@food.content) do |builder| %>
+							<%= @food.product_type.fields.each do |field| %>
+								<%= render "foods/fields/#{field.field_type}", field: field, f: builder %>
+							<% end%>
+						<% end %>
+						</div>
 					<div class="button">
 						<%= f.submit "Post", class: "btn btn-primary btn-success", id: 'search-button' %>
 					</div>

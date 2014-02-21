@@ -1,10 +1,12 @@
 class Food < ActiveRecord::Base
+  belongs_to :product_type
   has_many :reverse_relationships, foreign_key: "food_id",
                                    class_name:  "Relationship",
                                    dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
   validates :name, uniqueness: { case_sensitive: false }
   mount_uploader :image, ImageUploader
+  serialize :content, Hash
   
   def self.search(search)
     if search
