@@ -8,7 +8,6 @@ class Activity < ActiveRecord::Base
   validates :user_id, presence: true
   validates :content, length: { maximum: 140 }
   validates :type, length: { maximum: 140 }
-  mount_uploader :image, ImageUploader
   acts_as_taggable
   self.inheritance_column = nil
   
