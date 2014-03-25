@@ -5,15 +5,20 @@
 		<div class="row">
 			<div class="col-lg-6 col-lg-offset-3">
 				<%= form_for @chef do |f| %>
-				
 					<%= render 'shared/error_messages', object: f.object %>
-					<% unless @chef.has_image_upload? %>
-				    <%= link_to "Upload Image", new_image_path %>
-				  <% end %>	
-					<%= f.hidden_field :key %>
-					<%= render 'fields', f: f %>		
+					<%= f.hidden_field :image, id: 'chef_file' %>
+					<div class="field">
+						<%= f.label :name %>
+						<%= f.text_field :name %>
+					</div>
+					<div class="image-field-chef" data-provides="image_field">
+						<p id="drag-area">Drag photo here!</p>
+					</div>
 					<%= f.submit "Create account", class: "btn btn-large btn-primary" %>
 				<% end %>
+				<div id="upload_area_chef">
+					<%= render "shared/direct_upload_form", data_object_type: 'chef' %>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -7,7 +7,7 @@
 		data: { confirm: "You sure?" } %>
 		<% end %>
 	<% else %>	
-		<%= link_to image_tag(chef.image_url(:thumbnail)), chef, id: "chef-image" %>
+		<%= link_to image_tag(chef.image, width: '100px'), chef, id: "chef-image" %>
 		<%= link_to chef.name, chef, class: "chef-name" %>
 	<div class="clear"></div>
 	<% end %>

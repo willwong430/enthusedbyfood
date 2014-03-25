@@ -4,7 +4,6 @@ class Chef < ActiveRecord::Base
                                    dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
   validates :name, uniqueness: { case_sensitive: false }
-  mount_uploader :image, ImageUploader
   
   def image_name
     File.basename(image.path || image.filename) if image

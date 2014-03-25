@@ -4,8 +4,6 @@ class ChefsController < ApplicationController
   def index
     @activity = current_user.activities.build
     @chefs = Chef.search(params[:search])
-    @uploader = Chef.new.image
-    @uploader.success_action_redirect = new_chef_url
   end
   
   def show
@@ -15,7 +13,7 @@ class ChefsController < ApplicationController
 
   def new
     @activity = current_user.activities.build
-    @chef = Chef.new(key: params[:key])
+    @chef = Chef.new
     respond_to do |format|
       format.html
     end
