@@ -4,10 +4,15 @@
 	<div class="col-lg-6 col-lg-offset-3">
 		<div class="row">
 			<div class="col-lg-6 col-lg-offset-3">
-				<%= form_for(@chef) do |f| %>
+				<%= form_for @chef do |f| %>
+				
 					<%= render 'shared/error_messages', object: f.object %>
+					<% unless @chef.has_image_upload? %>
+				    <%= link_to "Upload Image", new_image_path %>
+				  <% end %>	
+					<%= f.hidden_field :key %>
 					<%= render 'fields', f: f %>		
-					<%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+					<%= f.submit "Create account", class: "btn btn-large btn-primary" %>
 				<% end %>
 			</div>
 		</div>

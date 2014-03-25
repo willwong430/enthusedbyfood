@@ -1,5 +1,6 @@
 <%= form_for(@activity, :html => {:multipart => true}) do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
+	<%= f.hidden_field :file, class: "hello", id: 'activity_file' %>
 
 	<fieldset>
 		<%= f.label :title, "Title of post:", class: 'attach' %>
@@ -10,16 +11,9 @@
 			</span>
 			
 			<span id="attach_photo">
-				<span class="fileupload fileupload-new" data-provides="fileupload">
-					<div class="fileupload-preview thumbnail" style="width: 200px; height: 150px"></div>
-					<span class="btn btn-file" id="button-cust">
-						<span class="fileupload-new">Show</span>
-							<%= f.file_field :image, :as => :file %>
-						<span class="fileupload-exists">Change</span>
-						<input type="file" />
-					</span>
-					<a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
-				</span>
+				<div class="image-field-activity">
+					<p id="drag-area">Drag and drop photos here!</p>
+				</div>
 			</span>
 		
 		<span id="attach_link">
@@ -36,6 +30,10 @@
 			<%= f.submit "Share!", class: "btn btn-primary btn-success", id: 'search-button' %>
 		</div>
 	</fieldset>
-	
 <% end %>
 
+<div class="row" id="upload-row">
+	<div class="col-lg-6 col-lg-offset-3" id="upload_area_activity">
+		<%= render "shared/direct_upload_form", data_object_type: 'activity' %>
+	</div>
+</div>

@@ -10,11 +10,19 @@ class CuisinesController < ApplicationController
   def show
     @activity = current_user.activities.build
     @cuisine = Cuisine.find(params[:id])
+    # unless @cuisine.file.nil?
+      # parse = @cuisine.file.split('/')
+      # filename = parse[-1]
+      # @dumb = URI(@cuisine.file)
+      # @dumb = Magick::Image.read(uri).first
+      # dumb.crop_resized!(75, 75, Magick::NorthGravity)
+      #      @dumb = dumb.write('filename_resized.jpg')
+    # end
   end
 
   def new
     @activity = current_user.activities.build
-    @cuisine = Cuisine.new  
+    @cuisine = Cuisine.new
     respond_to do |format|
       format.html
     end
@@ -25,7 +33,7 @@ class CuisinesController < ApplicationController
     @cuisine = Cuisine.new(cuisine_params)
     if @cuisine.save
       flash[:success] = "Enthused with #{@cuisine.name}"
-      redirect_to cuisine_path
+      redirect_to cuisine_path(@cuisine)
     else
       render 'new'
     end
@@ -49,7 +57,7 @@ class CuisinesController < ApplicationController
   private 
   
     def cuisine_params
-      params.require(:cuisine).permit(:name, :image, :thumbnail, :content)
+      params.require(:cuisine).permit(:name, :image, :thumbnail, :content, :file)
     end
     
     def admin_user

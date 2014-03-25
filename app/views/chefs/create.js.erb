@@ -1,0 +1,5 @@
+<% if @chef.new_record? %>
+	alert("Failed to upload model: <%= j @chef.errors.full_messages.join(', ').html_safe %>");
+<% else %>
+  $("#chefs").append("<%= j render(@chef) %>");
+<% end %>

@@ -8,10 +8,12 @@ gem 'faker', '1.2.0'
 gem 'will_paginate', '3.0.5'
 gem 'bootstrap-will_paginate', '0.0.10'
 gem 'nokogiri', '~> 1.6.1'
-gem 'rmagick'
 gem 'carrierwave'
-gem 'fog'
+gem 'rmagick'
+gem 'fog' 
+gem 'aws-s3', require: 'aws/s3'
 gem 'carrierwave_direct'
+# gem 's3_direct_upload', "~> 0.1.6"
 gem 'sidekiq'
 gem 'oauth', '0.4.7'
 gem 'acts-as-taggable-on'
@@ -20,6 +22,8 @@ gem 'route_downcaser'
 group :development, :test do
   gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.14.0'
+  gem 'pry-rails'
+  gem 'pry-debugger'
 end
 
 group :test do

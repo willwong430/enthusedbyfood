@@ -4,6 +4,8 @@ class ChefsController < ApplicationController
   def index
     @activity = current_user.activities.build
     @chefs = Chef.search(params[:search])
+    @uploader = Chef.new.image
+    @uploader.success_action_redirect = new_chef_url
   end
   
   def show
@@ -13,7 +15,7 @@ class ChefsController < ApplicationController
 
   def new
     @activity = current_user.activities.build
-    @chef = Chef.new
+    @chef = Chef.new(key: params[:key])
     respond_to do |format|
       format.html
     end
@@ -23,8 +25,7 @@ class ChefsController < ApplicationController
     @activity = current_user.activities.build
     @chef = Chef.new(chef_params)
     if @chef.save
-      flash[:success] = "Enthused by #{@chef.name}"
-      redirect_to chefs_path(@chef)
+      redirect_to chef_path(@chef), notice: "Chef was successfully created."
     else
       render 'new'
     end
@@ -36,7 +37,7 @@ class ChefsController < ApplicationController
   end
   
   def update
-    @chef = Chef.find_by_name(params[:id])
+    @chef = Chef.find(params[:id])
     if @chef.update_attributes(chef_params)
       flash[:success] = "Chef profile updated"
       redirect_to @chef 
@@ -45,10 +46,16 @@ class ChefsController < ApplicationController
     end
   end
   
+  def destroy
+    @chef = Chef.find(params[:id])
+    @chef.destroy
+    redirect_to chefs_url, notice: "Chef was successfully destroyed."
+  end
+  
   private 
   
     def chef_params
-      params.require(:chef).permit(:name, :image, :thumbnail)
+      params.require(:chef).permit(:image, :name, :thumbnail, :key)
     end
     
 end

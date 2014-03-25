@@ -1,7 +1,7 @@
 <li id="<%= tree_item.id %>">
 	<div class="user">
 		<span class="user_profile">
-			<%= link_to (image_tag tree_item.user.image_url(:avatar).to_s), tree_item.user, id: "user_image"%>
+			<%= link_to (image_tag tree_item.user.image, width: '80px'), tree_item.user, id: "user_image"%>
 		</span>
 		<span>
 			<% if current_user?(tree_item.user) %>
@@ -28,8 +28,8 @@
 	</span>
 	<% end %>
 	
-	<% unless tree_item.image.blank? %>
-		<div class="img-responsive" id="photo" data-toggle="tooltip" title="<%= tree_item.content %>"><%= image_tag tree_item.image_url(:standard).to_s %>
+	<% unless tree_item.file.blank? %>
+		<div class="img-responsive" id="photo" data-toggle="tooltip" title="<%= tree_item.content %>"><%= image_tag tree_item.file, class: "feed-photo" %>
 		</div>	
 	<% end %>
 	<% unless tree_item.tag_list.blank? %>
@@ -40,4 +40,7 @@
 	<div>
 	<%= render 'shared/delete', object: tree_item %>
 	</div>
+	<p>
+		<%= @filename %>
+	</p>
 </li>

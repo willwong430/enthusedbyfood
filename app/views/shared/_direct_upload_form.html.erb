@@ -1,0 +1,19 @@
+<form action="http://enthusedbyfood.s3.amazonaws.com/" method="post" enctype="multipart/form-data" class="direct-upload">
+	<input type="hidden" name="key">
+	<input type="hidden" name="AWSAccessKeyId" value="AKIAJHXUXGZ26KODSPBQ">
+	<input type="hidden" name="acl" value="public-read"> 
+	<input type="hidden" name="policy">
+	<input type="hidden" name="signature">
+	<input type="hidden" name="success_action_status" value="201">
+	<p id="direct-upload-button">
+		<span class="btn btn-file" id="button-cust" data-foodie-type="<%= data_object_type %>">OR click here to upload image
+			<input type="file" name="file" id="file_input"> 
+		</span>
+	</p>
+</form>
+
+<div class="progress progress-striped active" id="<%= data_object_type %>" data-foodie-type="<%= data_object_type %>">
+  <div class="progress-bar" id="<%= data_object_type %>" role="progressbar">
+  </div>
+</div>
+

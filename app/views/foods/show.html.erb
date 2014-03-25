@@ -12,7 +12,7 @@
 					<p style="font-size: 0.8em">(Beautiful image of food coming soon)</p>
 					<%= image_tag('default_food.png') %>
 				<% else %>
-						<a id="food_image" data-toggle="modal" href="#foodModal"><%= image_tag @food.image_url(:thumbnail), class: "food-profile-image" %></a>
+						<a id="food_image" data-toggle="modal" href="#foodModal"><%= image_tag @food.image, width: '200px', class: "food-profile-image" %></a>
 						<%= render 'foods/modal_food' %>
 				<% end %>
 			</div>

@@ -3,11 +3,11 @@
 		<h2 id="cuisine-name" class="cuisine-name"><%= @cuisine.name %></h2>
 		<div class="col-sm-3 col-md-3 col-lg-3">
 			<div id="cuisine-profile-image">
-				<% if @cuisine.image.blank? %>
+				<% if @cuisine.file.blank? %>
 				<p style="font-size: 0.8em">(Picture of cuisine coming soon)</p>
 				<%= image_tag('default_cuisine.png') %>
 				<% else %>
-				<%= image_tag @cuisine.image_url(:thumbnail), class: "cuisine-profile-image",
+				<%= image_tag @cuisine.file, class: "cuisine-profile-image",
 				alt: h(@cuisine.name) %>
 				<% end %>
 			</div>
@@ -36,6 +36,9 @@
 			</div>
 			<div>
 				<h4>Recent Activity</h4>
+				<p>
+					<%= @filename %>
+				</p>
 			</div>
 		</div>	
 	</div>

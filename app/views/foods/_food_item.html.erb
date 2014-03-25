@@ -7,7 +7,7 @@
 		data: { confirm: "You sure?" } %>
 		<% end %>
 	<% else %>	
-		<%= link_to (image_tag food_item.image_url(:avatar).to_s), food_item, id: "food-image" %>
+		<%= link_to (image_tag food_item.image, width: '80px'), food_item, id: "food-image" %>
 		<%= link_to food_item.name, food_item, class: "food-name" %>
 	<div class="clear"></div>
 	<% end %>

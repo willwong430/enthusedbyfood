@@ -1,9 +1,11 @@
 Agreedupon1::Application.routes.draw do
+  resources :signed_urls, only: :index
   resources :users, path: 'foodies' do
     member do
       get :following, :followers, :ratings
     end
   end
+  resource :image, :only => :new
   resources :sessions,      only: [:new, :create, :destroy]
   resources :activities,    only: [:new, :create, :destroy] 
   get 'tags/:tag', to: 'foods#show', as: :tag, 

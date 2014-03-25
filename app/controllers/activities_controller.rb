@@ -8,6 +8,7 @@ class ActivitiesController < ApplicationController
   end
   
   def create
+    require 'RMagick'
     @activity = current_user.activities.build(activity_params)
     session[:return_to] ||= request.referer
     if @activity.save
@@ -33,7 +34,7 @@ class ActivitiesController < ApplicationController
     end
     
     def activity_params
-      params.require(:activity).permit(:title, :content, :type, :tag_list, :image, :thumbnail,
+      params.require(:activity).permit(:title, :content, :type, :tag_list, :image, :thumbnail, :file,
                     details_attributes: [:id, :what_eaten, :where_at, :who_with, :why_eat, :when_time],
                     ratings_attributes: [:score])
     end

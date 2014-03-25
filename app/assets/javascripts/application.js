@@ -13,7 +13,6 @@
 //= require_self
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-fileupload
 //= require bootstrap
 //= require bootstrap-notify
 //= require cultivate
@@ -24,4 +23,7 @@
 //= require lists.js.coffee
 //= require sidebar
 //= require users
+//= require jquery-fileupload/basic
+//= require jquery-fileupload/vendor/tmpl
+//= require photos
 //= require jquery.ui.all

@@ -11,9 +11,9 @@
 	</span>
 	<% end %>
 	
-	<% unless activity.image.blank? %>
+	<% unless activity.file.blank? %>
 		<div class="content"><%= activity.title %></div>
-		<div class="img-responsive" id="photo" data-toggle="tooltip" title="<%= activity.content %>"><%= image_tag activity.image_url(:standard).to_s %>
+		<div class="img-responsive" id="photo" data-toggle="tooltip" title="<%= activity.content %>"><%= image_tag activity.file, width: '500px' %>
 		</div>	
 	<% end %>
 	<div class="tagged">

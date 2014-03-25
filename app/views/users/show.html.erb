@@ -7,9 +7,9 @@
 						<%= gravatar_for @user, size: 52 %>
 						<%= link_to @user.name, @user %>
 				<% else %>
-				<a id="user_image" data-toggle="modal" href="#userModal"><%= image_tag @user.image_url(:avatar).to_s %></a>
+				<a id="user_image" data-toggle="modal" href="#userModal"><%= image_tag @user.image, width: '200px' %></a>
 				<%= render 'users/modal_avatar' %>
-				<%= @user.name %>
+				<p><%= @user.name %></p>
 				<% end %>
 			</h4>
 			<% unless current_user?(@user) %>

@@ -6,7 +6,7 @@
 		<%= form_for @user do |f| %>
 			<%= render 'shared/error_messages', object: f.object %>
 			
-			<%= f.hidden_field :user_profile_id %>
+			<%= f.hidden_field :image, id: 'user_file' %>
 			
 			<div class="field">
 				<%= f.label :name %>
@@ -24,19 +24,18 @@
 				<%= f.label :password_confirmation, "Confirm Password" %>
 				<%= f.password_field :password_confirmation %>
 			</div>
-				
-			<div class="fileupload fileupload-new" data-provides="fileupload">
-			  <span class="btn btn-file" id="button-cust">
-					<span class="fileupload-new">Upload Photo</span>
-					<%= f.file_field :image, :as => :file %>
-					<span class="fileupload-exists">Change</span>
-					<input type="file" />
-				</span>
 
-				<a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
+			<div class="image-field-user" data-provides="image_field">
+				<p id="drag-area">Drag photo here!</p>
 			</div>
 			<%= f.submit "Save changes", class: "btn btn-primary btn-lg", id: "save_button"%>
 		<% end %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-6 col-md-offset-3" id="upload_area_user">
+		<%= render "shared/direct_upload_form", data_object_type: 'user' %>
 	</div>
 </div>
 		
