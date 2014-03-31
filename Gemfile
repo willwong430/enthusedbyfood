@@ -12,12 +12,13 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'fog' 
 gem 'aws-s3', require: 'aws/s3'
-gem 'carrierwave_direct'
+# gem 'carrierwave_direct'
 # gem 's3_direct_upload', "~> 0.1.6"
 gem 'sidekiq'
 gem 'oauth', '0.4.7'
 gem 'acts-as-taggable-on'
 gem 'route_downcaser'
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
