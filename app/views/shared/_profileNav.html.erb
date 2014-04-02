@@ -1,0 +1,23 @@
+<div style="width: 100px; float: right; padding-top: 8px">
+	<ul style="list-style: none">
+		<li id="fat-menu" class="dropdown">
+			<% if current_user.image.blank? %>
+					<%= gravatar_for current_user, size: 52 %>
+					<%= link_to current_user.name, @user %>
+			<% else %>
+				<a href="#" data-toggle="dropdown" id="hellothere">
+				<%= image_tag current_user.image, width: '40px' %><b class="caret"></b>
+				</a>
+			<% end %>
+			
+			<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+				<li><%= link_to current_user.name, current_user, class: "dropdownLink" %></li>
+				<li><%= link_to "edit settings", edit_user_path(current_user), class: "dropdownLink" %></li>
+				<li class="divider"></li>
+				<li>
+					<%= link_to "sign out", signout_path, method: "delete", class: "dropdownLink" %>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>

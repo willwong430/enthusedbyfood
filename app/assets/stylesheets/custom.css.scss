@@ -144,10 +144,7 @@ p {
 
 .navbar-form {
 	 padding-top: 10px;
-	 margin-top: 0px;
-	 margin-right: 100px;
-	 margin-bottom: 0px;
-	 margin-left: -15px;
+	 margin: 0px 100px 0px -15px;
 	 border-top: 1px solid transparent;
 	 border-bottom: 1px solid transparent;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -166,6 +163,7 @@ p {
 	margin-left: auto;
 	padding-top: 0px;
 	line-height: 1;
+	font-weight: bold;
 }
 
 .navbar-form {
@@ -175,7 +173,7 @@ p {
 .navbar-inverse > .navbar-collapse > ul > li:hover {
 	background-color: #9E0508;
 	border-radius: 10px;
-	border: 0px ;
+	border: 0px;
 	a {
 		color: #fff;
 	}
@@ -189,9 +187,9 @@ li #fat-menu {
 	float: right;
 }
 
-.navbar #acct {
+/*.navbar #acct {
 	border-left: 1px solid #9E0508;
-}
+}*/
 .navbar #acct li {
 	border-left: none;
 	border-right: none;
@@ -1100,4 +1098,13 @@ label {
 
 .feed-photo {
 	width: 500px;
+}
+
+#hellothere {
+	&:hover {
+		text-decoration: none;
+	}
+	&:focus{
+		text-decoration: none;
+	}
 }

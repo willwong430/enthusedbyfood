@@ -2,6 +2,9 @@
 	<div class="row" id="header">
 		<a id="logo" href="/">enthused by <span>FOOD</span></a>
 		<%= render 'shared/search' %>
+		<% if signed_in? %>
+		<%= render 'shared/profileNav'%>
+		<% end %>
 	</div>
 
 	<div class="navbar navbar-default navbar-inverse">
@@ -21,19 +24,6 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right" id="acct">
 				<li style="border-right: 1px solid #9E0508"><%= link_to "My Profile", current_user %></li>
-				<li id="fat-menu" class="dropdown">
-					<a href="#" data-toggle="dropdown">
-						Account <b class="caret"></b>
-					</a>
-					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-						<li><%= link_to "Profile", current_user, class: "dropdownLink" %></li>
-						<li><%= link_to "Settings", edit_user_path(current_user), class: "dropdownLink" %></li>
-						<li class="divider"></li>
-						<li>
-							<%= link_to "Sign out", signout_path, method: "delete", class: "dropdownLink" %>
-						</li>
-					</ul>
-				</li>
 			</ul>
 			<% else %>
 			<li><%= link_to "Discover", discover_path %></li>

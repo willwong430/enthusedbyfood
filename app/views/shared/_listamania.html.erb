@@ -44,7 +44,7 @@
 			</ul>
 		<% end %>
 		<div class="add-list">
-		<%= link_to "Add a List", new_rating_path, id: "new_link", remote: true %>
+		<%= link_to "Create List", new_rating_path, id: "new_link", remote: true %>
 		</div>
 	<% else %>
 		<h4><%= link_to "#{@user.name}'s Plate of Favorites", ratings_user_path(@user) %></h4>
