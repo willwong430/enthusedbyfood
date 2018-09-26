@@ -19,9 +19,9 @@ class SignedUrlsController < ApplicationController
           ["starts-with", "$key", "uploads/"],
           { acl: 'public-read' },
           { success_action_status: '201' },
-          {"x-amz-credential": "AKIAIN4ZPUQJIFDBZ7OA/20151229/us-east-1/s3/aws4_request"},
-          {"x-amz-algorithm": "AWS4-HMAC-SHA256"},
-          {"x-amz-date": "20180925T000000Z" }
+          {:'x-amz-credential' => "AKIAIN4ZPUQJIFDBZ7OA/20151229/us-east-1/s3/aws4_request"},
+          {:'x-amz-algorithm' => "AWS4-HMAC-SHA256"},
+          {:'x-amz-date' => "20180925T000000Z" }
         ]
       }.to_json
     ).gsub(/\n|\r/, '')
