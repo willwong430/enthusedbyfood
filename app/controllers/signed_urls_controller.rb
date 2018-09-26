@@ -2,7 +2,7 @@ class SignedUrlsController < ApplicationController
   def index
     render json: {
       policy: s3_upload_policy_document,
-      X-Amz-Signature: s3_upload_signature,
+      "X-Amz-Signature": s3_upload_signature,
       key: "uploads/#{SecureRandom.uuid}/#{params[:doc][:title]}",
       success_action_redirect: "/"
     }
